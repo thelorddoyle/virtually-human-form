@@ -12,18 +12,18 @@ function Form () {
     const yearOptions = [2022,2021,2020,2019,2018,2017,2016,2015,2014,2013,2012,2011,2010,2009,2008,2007,2006,2005,2004,2003,2002,2001,2000,1999,1998,1997,1996,1995,1994,1993,1992,1991,1990,1989,1988,1987,1986,1985,1984,1983,1982,1981,1980]
 
     const getNumOfMonth = {
-        January: 1,
-        February: 2,
-        March: 3,
-        April: 4,
-        May: 5,
-        June: 6,
-        July: 7,
-        August: 8,
-        September: 9,
-        October: 10,
-        November: 11,
-        December: 12
+        January: 0,
+        February: 1,
+        March: 2,
+        April: 3,
+        May: 4,
+        June: 5,
+        July: 6,
+        August: 7,
+        September: 8,
+        October: 9,
+        November: 10,
+        December: 11
     }
 
     const getMonthFromNum = {
@@ -50,7 +50,7 @@ function Form () {
             setDayList(dayOptionsMin)
         }
     }
-
+    
     let defaultValues = {
         firstName: 'Daniel',
         lastName: 'Lord-Doyle',
@@ -62,9 +62,9 @@ function Form () {
 
     // state variables
     const [values, setValues] = useState({...defaultValues})
-    const [day, setDay] = useState(values.dob.getDate())
-    const [month, setMonth] = useState(getMonthFromNum[values.dob.getMonth()])
+    const [month, setMonth] = useState(values.dob.getMonth())
     const [year, setYear] = useState(values.dob.getFullYear())
+    const [day, setDay] = useState(values.dob.getDate())
     const [dayList, setDayList] = useState([])
 
     useEffect(() => {
@@ -98,12 +98,12 @@ function Form () {
     })
 
     const handleMonthChange = (ev) => {
-        const month = ev.target.value;
-        const monthToSubmit = getNumOfMonth[month] -1;
-        chooseDayListArg(ev.target.value);
-        setMonth(monthToSubmit);
-        console.log('the month is now: ', month)
+        const month = getNumOfMonth[ev.target.value];
+        setMonth(month)
+        chooseDayListArg(getMonthFromNum[month])
+        console.log('the month is now: ', getMonthFromNum[month])
     }
+
 
     const handleDayChange = (ev) => {
         const day = Number(ev.target.value);
@@ -124,6 +124,10 @@ function Form () {
     const onSubmit = (ev) => {
         ev.preventDefault();
         try {
+            // console.log(month)
+            // console.log()
+            let valuesDob = values.dob = new Date(year, month, day)
+            setValues({...values, dob: valuesDob})
             console.log(values)
         } catch (err) {
             console.log(err)
@@ -133,10 +137,10 @@ function Form () {
     const discardChanges = () => {
 
         setValues(defaultValues);
+        setDay(values.dob.getDate())
+        setMonth(values.dob.getMonth())
+        setYear(values.dob.getFullYear())
         chooseDayListArg(month)
-        setDay(Number(14))
-        setMonth('October')
-        setYear(Number(1988))
 
     }
 
@@ -163,17 +167,17 @@ function Form () {
                 <label htmlFor="selectYourDateOfBirth">Select Your Date Of Birth 
                 <br />
                     <label> Month
-                        <select onChange={handleMonthChange} name="month" id="monthPicker" value={month}>
+                        <select onChange={handleMonthChange} name="month" id="monthPicker" value={getMonthFromNum[values.month]} defaultValue={getMonthFromNum[month]}>
                         {monthListOptions}
                         </select>
                     </label> 
                     <label> Day
-                        <select onChange={handleDayChange} name="day" id="dayPicker" value={day} >
+                        <select onChange={handleDayChange} name="day" id="dayPicker" value={day}>
                         {dayListOptions}
                         </select>
                     </label>
                     <label> Year
-                        <select onChange={handleYearChange} name="year" id="yearPicker" value={year}>
+                        <select onChange={handleYearChange} name="year" id="yearPicker" value={values.year} defaultValue={year}>
                         {yearListOptions}
                         </select>  
 
