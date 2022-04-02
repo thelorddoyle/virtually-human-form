@@ -1,8 +1,19 @@
 import { useState } from "react"
 import { DatePicker } from "./DatePicker"
-import {defaultValues} from '../helpers/defaultValues'
+import ImageUpload from './ImageUpload'
+import './../styles/form.css'
 
 function Form () {
+
+    // in place of an API, this object represents our user
+    const defaultValues = {
+        firstName: 'Daniel',
+        lastName: 'Lord-Doyle',
+        email: 'dlorddoyle@gmail.com',
+        phone: '(+61) 451 087 593',
+        dob: new Date(1988, 9, 14),
+        bio: 'lorem ipsum lorem ipsum'
+    }
 
     // state variables
     const [values, setValues] = useState({...defaultValues})
@@ -28,35 +39,38 @@ function Form () {
     }
 
     return(
-        <div>
-            <h1>Settings</h1>
-            <form onSubmit={onSubmit}>
-                <label htmlFor="firstName">First Name
-                <input type="text" name='firstName' value={values.firstName} onChange={onChange} />
-                </label>
-                <br />
-                <label htmlFor="lastName">Last Name
-                <input value={values.lastName} onChange={onChange} name='lastName' type="text"  />
-                </label>
-                <br />
-                <label htmlFor="email">Email
-                <input onChange={onChange} name='email' type="text" value={values.email} />
-                </label>
-                <br />
-                <label htmlFor="phone">Phone
-                <input onChange={onChange} name='phone' type="text" value={values.phone} />
-                </label>
-                <br />
-                <DatePicker values={values} convertDate={convertDate} />
-                <br />
-                <label htmlFor="bio"> Bio
-                <br />
-                <textarea onChange={onChange} name="bio" value={values.bio} />
-                </label>
-                <br />
-                <button type="submit">Save Changes</button>
-                <button onClick={discardChanges}>Discard Changes</button>
-            </form>
+        <div className="form-grid">
+
+            <div className="form-grid-left">
+                <h3>Settings</h3>
+                <form onSubmit={onSubmit}>
+                    <label htmlFor="firstName">FIRST NAME*
+                    <input type="text" name='firstName' value={values.firstName} onChange={onChange} />
+                    </label>
+                    <label htmlFor="lastName">LAST NAME*
+                    <input value={values.lastName} onChange={onChange} name='lastName' type="text"  />
+                    </label>
+                    <label htmlFor="email">EMAIL*
+                    <input onChange={onChange} name='email' type="text" value={values.email} />
+                    </label>
+                    <label htmlFor="phone">PHONE*
+                    <input onChange={onChange} name='phone' type="text" value={values.phone} />
+                    </label>
+                    <DatePicker values={values} convertDate={convertDate} />
+                    <label htmlFor="bio">BIO*
+                    <textarea onChange={onChange} name="bio" value={values.bio} />
+                    </label>
+                    <div className="button-container">
+                        <button className="save-button" type="submit"><p>Save Changes</p></button>
+                        <button className="discard-button" onClick={discardChanges}><p>Discard</p></button>
+                    </div>
+                </form>
+            </div>
+
+            <div className="form-grid-left">
+                <ImageUpload />
+            </div>
+
         </div>
     )
 }

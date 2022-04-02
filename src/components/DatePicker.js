@@ -1,4 +1,4 @@
-import { monthOptions, dayOptionsMin, dayOptionsMean, dayOptionsMax, yearOptions, getNumOfMonth, getMonthFromNum } from '../helpers/datepicker'
+import { monthOptions, dayOptionsMin, dayOptionsMean, dayOptionsMax, yearOptions, getNumOfMonth, getMonthFromNum } from '../helpers/datePickerHelpers'
 
 import { useEffect, useState } from "react"
 
@@ -73,23 +73,22 @@ export const DatePicker = ({values, convertDate}) => {
     }
 
     return(
-        <label htmlFor="selectYourDateOfBirth">Select Your Date Of Birth 
-        <br />
-            <label> Month
+        <label htmlFor="selectYourDateOfBirth">SELECT YOUR DATE OF BIRTH* 
+
+            <div>
                 <select onChange={handleDateChange} name="month" id="monthPicker" value={getMonthFromNum[month]}>
                 {monthListOptions}
                 </select>
-            </label> 
-            <label> Day
+
                 <select onChange={handleDateChange} name="day" id="dayPicker" value={day}>
                 {dayListOptions}
                 </select>
-            </label>
-            <label> Year
+
                 <select onChange={handleDateChange} name="year" id="yearPicker" value={year}>
                 {yearListOptions}
                 </select>  
-            </label>
+            </div>
+            
         </label>
     )
 }
