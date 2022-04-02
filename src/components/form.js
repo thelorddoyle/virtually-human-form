@@ -1,110 +1,30 @@
-import { useEffect, useState } from "react"
-
-import { monthOptions, dayOptionsMin, dayOptionsMean, dayOptionsMax, yearOptions, getNumOfMonth, getMonthFromNum } from '../helpers/datepicker'
+import { useState } from "react"
+import { DatePicker } from "./DatePicker"
+import {defaultValues} from '../helpers/defaultValues'
 
 function Form () {
 
-    const chooseDayListArg = (month) => {
-        if (month === 'April' || month === 'June' || month === 'September' || month === 'November') {
-            setDayList(dayOptionsMax);
-        } else if (month !== 'August') {
-            setDayList(dayOptionsMean)
-        } else {
-            setDayList(dayOptionsMin)
-        }
-    }
-    
-    let defaultValues = {
-        firstName: 'Daniel',
-        lastName: 'Lord-Doyle',
-        email: 'dlorddoyle@gmail.com',
-        phone: '0451087593',
-        dob: new Date(1988, 9, 14),
-        bio: 'lorem ipsum lorem ipsum'
-    }
-
     // state variables
     const [values, setValues] = useState({...defaultValues})
-    const [month, setMonth] = useState(values.dob.getMonth())
-    const [year, setYear] = useState(values.dob.getFullYear())
-    const [day, setDay] = useState(values.dob.getDate())
-    const [dayList, setDayList] = useState([])
 
-    useEffect(() => {
-        try {
-            chooseDayListArg(month)
-        } catch(err) {
-            console.log(err)
-        }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
-    
-    // map out all options for a Month selector
-    let monthListOptions = monthOptions.map((month) => {
-        // each month is a string, not a number
-        return (
-            <option key={month} value={`${month}`}>{month} </option>
-        )
-    })
-
-    // map out all options for a Day selector, based on which month it is (dayList)
-    let dayListOptions = dayList.map((day) => {
-        return (
-            <option key={day} value={`${day}`}>{day} </option>
-        )
-    })
-
-    let yearListOptions = yearOptions.map((year) => {
-        return(
-            <option key={year} value={`${year}`}>{year}</option>
-        )
-    })
-
-    const handleMonthChange = (ev) => {
-        const month = getNumOfMonth[ev.target.value];
-        setMonth(month)
-        chooseDayListArg(getMonthFromNum[month])
-        console.log('the month is now: ', getMonthFromNum[month])
-    }
-
-
-    const handleDayChange = (ev) => {
-        const day = Number(ev.target.value);
-        setDay(day)
-        console.log('the day is now: ', day)
-    }
-    
-    const handleYearChange = (ev) => {
-        const year = Number(ev.target.value);
-        setYear(year)
-        console.log('the year is now: ', year)
-    }
-
+    // change & submit handles
     const onChange = (ev) => {
         setValues({...values, [ev.target.name]: ev.target.value})
     }
-
     const onSubmit = (ev) => {
         ev.preventDefault();
-        try {
-            // console.log(month)
-            // console.log()
-            let valuesDob = values.dob = new Date(year, month, day)
-            setValues({...values, dob: valuesDob})
-            console.log(values)
-        } catch (err) {
-            console.log(err)
-        }
+        console.log(values)
     }
 
+    // date converter for pulling in values from DatePicker component
+    const convertDate = (day, month, year) => {
+        let valuesDob = values.dob = new Date(year, month, day)
+        setValues({...values, dob: valuesDob})
+    }
+
+    // Discard Changes handler
     const discardChanges = () => {
-
         setValues(defaultValues);
-        setDay(defaultValues.dob.getDate())
-        setMonth(defaultValues.dob.getMonth())
-        setYear(defaultValues.dob.getFullYear())
-        chooseDayListArg(month)
-
     }
 
     return(
@@ -127,28 +47,11 @@ function Form () {
                 <input onChange={onChange} name='phone' type="text" value={values.phone} />
                 </label>
                 <br />
-                <label htmlFor="selectYourDateOfBirth">Select Your Date Of Birth 
-                <br />
-                    <label> Month
-                        <select onChange={handleMonthChange} name="month" id="monthPicker" value={getMonthFromNum[month]}>
-                        {monthListOptions}
-                        </select>
-                    </label> 
-                    <label> Day
-                        <select onChange={handleDayChange} name="day" id="dayPicker" value={day}>
-                        {dayListOptions}
-                        </select>
-                    </label>
-                    <label> Year
-                        <select onChange={handleYearChange} name="year" id="yearPicker" value={year}>
-                        {yearListOptions}
-                        </select>  
-                    </label>
-                </label>
+                <DatePicker values={values} convertDate={convertDate} />
                 <br />
                 <label htmlFor="bio"> Bio
                 <br />
-                    <textarea onChange={onChange} name="bio" value={values.bio} />
+                <textarea onChange={onChange} name="bio" value={values.bio} />
                 </label>
                 <br />
                 <button type="submit">Save Changes</button>
