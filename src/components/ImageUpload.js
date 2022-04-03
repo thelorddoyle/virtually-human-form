@@ -6,6 +6,8 @@ const ImageUpload = () => {
     let inputElement;
     let removeButton;
     
+    // this useEffect triggers on the first render, so that after render I can obtain my elements to use later
+    // TODO: complete transfer to useRef
     useEffect(() => {
         // get the drop zone element for the image upload
         imageUploadElement = document.querySelector('.image-upload');
@@ -39,6 +41,7 @@ const ImageUpload = () => {
             })
         })
 
+        // handles file being stored in to inputElement.files when an image is dropped on to the imageUploadElement
         imageUploadElement.addEventListener('drop', e => {
             e.preventDefault()
             if (e.dataTransfer.files.length) {

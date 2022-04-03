@@ -1,6 +1,12 @@
 import { useState } from "react"
-import { DatePicker } from "./DatePicker"
+import { DatePicker } from "./formComponents/DatePicker"
 import { Validate } from '../helpers/validators'
+import { FirstName } from './formComponents/FirstName'
+import { LastName } from './formComponents/LastName'
+import { Email } from './formComponents/Email'
+import { Phone } from './formComponents/Phone'
+import { Bio } from './formComponents/Bio'
+import { Buttons } from './formComponents/Buttons'
 import ImageUpload from './ImageUpload'
 
 function Form () {
@@ -29,8 +35,8 @@ function Form () {
         let valuesDob = values.dob = new Date(year, month, day)
         setValues({...values, dob: valuesDob})
     }
-
     
+    // created this so I could take the ev data from the form field and send it along with setIsValid so that I know if both the field & the form are valid or invalid
     const sendValidation = (ev) => {
         Validate(ev, setIsValid)
     }
@@ -42,7 +48,7 @@ function Form () {
         console.log('IsValid: ', isValid)
     }
 
-    // Discard Changes handler
+    // discard Changes handler
     const discardChanges = () => {
         setValues(defaultValues);
     }
@@ -53,35 +59,25 @@ function Form () {
             <div className="form-grid-left">
                 <h3>Settings</h3>
                 <form onSubmit={onSubmit}>
-                    <label htmlFor="firstName">FIRST NAME*
-                    <input type="text" name='firstName' value={values.firstName} onChange={onChange} onBlur={sendValidation} />
-                    <p className="error"></p>
-                    </label>
-                    <label htmlFor="lastName">LAST NAME*
-                    <input value={values.lastName} onChange={onChange} name='lastName' type="text" onBlur={sendValidation} />
-                    <p className="error"></p>
-                    </label>
-                    <label htmlFor="email">EMAIL*
-                    <input onChange={onChange} name='email' type="text" value={values.email} onBlur={sendValidation} />
-                    <p className="error"></p>
-                    </label>
-                    <label htmlFor="phone">PHONE*
-                    <input onChange={onChange} name='phone' type="text" value={values.phone} onBlur={sendValidation} />
-                    <p className="error"></p>
-                    </label>
+
+                    <FirstName values={values} onChange={onChange} sendValidation={sendValidation} />
+
+                    <LastName values={values} onChange={onChange} sendValidation={sendValidation} />
+
+                    <Email values={values} onChange={onChange} sendValidation={sendValidation} />
+
+                    <Phone values={values} onChange={onChange} sendValidation={sendValidation} />
+
                     <DatePicker values={values} convertDate={convertDate} />
-                    <label htmlFor="bio">BIO*
-                    <textarea onChange={onChange} name="bio" value={values.bio} onBlur={sendValidation} />
-                    <p className="error"></p>
-                    </label>
-                    <div className="button-container">
-                        <button className="save-button" type="submit"><p>Save Changes</p></button>
-                        <button className="discard-button" onClick={discardChanges}><p>Discard</p></button>
-                    </div>
+
+                    <Bio values={values} onChange={onChange} sendValidation={sendValidation} />
+
+                    <Buttons discardChanges={discardChanges} />
+
                 </form>
             </div>
 
-            <div className="form-grid-left">
+            <div className="form-grid-right">
                 <ImageUpload />
             </div>
 
