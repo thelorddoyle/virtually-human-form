@@ -271,23 +271,24 @@ textarea {
     line-height: 16px;
 }
 
-@keyframes slide-from-top {
-    from {
-      top: -100%;
+@keyframes opacityFadeInAndOut {
+    0% {
+        opacity: 1;
     }
-    to {
-      top: 0%;
-    } 
-  }
+    25% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 1;
+    }
+    75% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
 
-  @keyframes slide-away {
-    from {
-      top: 0%;
-    }
-    to {
-      top: -100%;
-    }
-  }
+}
 
 .banners {
     font-family: 'Montserrat';
@@ -303,6 +304,7 @@ textarea {
 }
 
 .success-banner-showing {
+    opacity: 0; 
     display: inline;
     position: absolute;
     top: 0;
@@ -310,5 +312,7 @@ textarea {
     width: 100%;
     text-align: center;
     background: linear-gradient(89.97deg, rgba(39, 177, 138, 0.38) 0%, rgba(39, 177, 138, 0.68) 114.46%), #2A2E35;
-    animation: slide-from-top 0.5s forwards;
+    animation: opacityFadeInAndOut 5s normal forwards;
+    transition-timing-function: ease-in;
+    animation-delay: 1s;
 }
