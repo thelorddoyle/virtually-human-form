@@ -1,7 +1,6 @@
 import { useState } from "react"
 import { DatePicker } from "./DatePicker"
 import ImageUpload from './ImageUpload'
-import './../styles/form.css'
 
 function Form () {
 

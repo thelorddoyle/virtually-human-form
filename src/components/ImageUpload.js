@@ -1,6 +1,4 @@
 import React, { useEffect } from 'react';
-import './../styles/imageUpload.css'
-
 
 const ImageUpload = () => {
 

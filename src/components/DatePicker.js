@@ -14,14 +14,17 @@ export const DatePicker = ({values, convertDate}) => {
         }
     }
 
-    const [month, setMonth] = useState(values.dob.getMonth())
-    const [year, setYear] = useState(values.dob.getFullYear())
-    const [day, setDay] = useState(values.dob.getDate())
+    const [isActiveMonth, setActiveMonth] = useState(false)
+    const [isActiveDay, setActiveDay] = useState(false)
+    const [isActiveYear, setActiveYear] = useState(false)
+    const [selectedMonth, setSelectedMonth] = useState("")
+    const [selectedDay, setSelectedDay] = useState("")
+    const [selectedYear, setSelectedYear] = useState("")
     const [dayList, setDayList] = useState([])
 
     useEffect(() => {
         try {
-            chooseDayListArg(month)
+            chooseDayListArg(selectedMonth)
         } catch(err) {
             console.log(err)
         }
@@ -29,65 +32,89 @@ export const DatePicker = ({values, convertDate}) => {
     }, [])
 
     useEffect(() => {
-        setMonth(values.dob.getMonth());
-        setDay(values.dob.getDate());
-        setYear(values.dob.getFullYear());
+        setSelectedMonth(getMonthFromNum[values.dob.getMonth()]);
+        setSelectedDay(values.dob.getDate());
+        setSelectedYear(values.dob.getFullYear());
     }, [values])
-    
-    // map out all options for a Month selector
-    let monthListOptions = monthOptions.map((month) => {
+
+    let monthListOptionsNew = monthOptions.map((month) => {
         // each month is a string, not a number
         return (
-            <option key={month} value={`${month}`}>{month} </option>
+            <div key={month} className='dropdown-item' onClick={(e) => {
+                setSelectedMonth(month)
+                setActiveMonth(false)
+                chooseDayListArg(month)
+                convertDate(Number(selectedDay), Number(getNumOfMonth[month]), Number(selectedYear))}}> 
+                {month} 
+            </div>
         )
     })
 
     // map out all options for a Day selector, based on which month it is (dayList)
-    let dayListOptions = dayList.map((day) => {
+    let dayListOptionsNew = dayList.map((day) => {
         return (
-            <option key={day} value={`${day}`}>{day} </option>
+            <div key={day} className='dropdown-item' onClick={(e) => {
+                setSelectedDay(day)
+                setActiveDay(false)
+                convertDate(Number(day), Number(getNumOfMonth[selectedMonth]), Number(selectedYear))}}>
+                {day} 
+            </div>
         )
     })
 
-    let yearListOptions = yearOptions.map((year) => {
-        return(
-            <option key={year} value={`${year}`}>{year}</option>
+    let yearListOptionsNew = yearOptions.map((year) => {
+        return (
+            <div key={year} className='dropdown-item' onClick={(e) => {
+                setSelectedYear(year)
+                setActiveYear(false)
+                convertDate(Number(selectedDay), Number(getNumOfMonth[selectedMonth]), Number(year))}}>
+                {year} 
+            </div>
         )
     })
-
-    const handleDateChange = (ev) => {
-        if (ev.target.name === 'day') {
-            const day = Number(ev.target.value);
-            setDay(day)
-            convertDate(day, month, year)
-        } else if (ev.target.name === 'month') {
-            const month = getNumOfMonth[ev.target.value];
-            setMonth(month)
-            chooseDayListArg(getMonthFromNum[month])
-            convertDate(day, month, year)
-        } else if (ev.target.name === 'year') {
-            const year = Number(ev.target.value);
-            setYear(year)
-            convertDate(day, month, year)
-        }
-    }
 
     return(
         <label htmlFor="selectYourDateOfBirth">SELECT YOUR DATE OF BIRTH* 
 
-            <div>
-                <select onChange={handleDateChange} name="month" id="monthPicker" value={getMonthFromNum[month]}>
-                {monthListOptions}
-                </select>
+        <div className='inline-grid'>
 
-                <select onChange={handleDateChange} name="day" id="dayPicker" value={day}>
-                {dayListOptions}
-                </select>
-
-                <select onChange={handleDateChange} name="year" id="yearPicker" value={year}>
-                {yearListOptions}
-                </select>  
+            <div className='dropdown'>
+                <div className="dropdown-btn" onClick={e => setActiveMonth(!isActiveMonth)}>
+                    {selectedMonth}
+                </div>
+                    <span className='svg-arrow'></span>
+                    {isActiveMonth && (
+                    <div className="dropdown-content">
+                        {monthListOptionsNew}
+                    </div>
+                    )}
             </div>
+
+            <div className='dropdown'>
+                <div className="dropdown-btn" onClick={e => setActiveDay(!isActiveDay)}>
+                    {selectedDay}
+                </div>
+                    <span className='svg-arrow'></span>
+                    {isActiveDay && (
+                    <div className="dropdown-content">
+                        {dayListOptionsNew}
+                    </div>
+                    )}
+            </div>
+
+            <div className='dropdown'>
+                <div className="dropdown-btn" onClick={e => setActiveYear(!isActiveYear)}>
+                    {selectedYear}
+                </div>
+                    <span className='svg-arrow'></span>
+                    {isActiveYear && (
+                    <div className="dropdown-content">
+                        {yearListOptionsNew}
+                    </div>
+                    )}
+            </div>
+
+        </div>
             
         </label>
     )
