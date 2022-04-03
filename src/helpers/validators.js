@@ -1,6 +1,6 @@
 import { emailTest, phoneTest, spaceTest, startAndEndTest, nameTest } from './regExTests'
 
-export const Validate = (ev, setIsValid) => {
+export const Validate = (ev, setIsValid, setIsSuccess) => {
 
     // common variables
     const fieldName = ev.target.name;
@@ -52,10 +52,12 @@ export const Validate = (ev, setIsValid) => {
         ev.target.className = 'error-field';
         // by setting isValid (in Form component) as false, the form will not be able to be saved
         setIsValid(false)
+        setIsSuccess(false)
     } else {
         ev.target.nextElementSibling.textContent = '';
         ev.target.className = '';
         // by setting isValid (in Form component) as true, the form can be saved and success message can be shown
         setIsValid(true)
+        setIsSuccess(false)
     }
 }

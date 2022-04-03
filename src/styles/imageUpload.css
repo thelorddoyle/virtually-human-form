@@ -34,8 +34,6 @@
   }
 
   .image-container {
-      margin-top: 10%;
-      margin-right: 50%;
       display: flex;
       flex-direction: column;
       align-items: center;
