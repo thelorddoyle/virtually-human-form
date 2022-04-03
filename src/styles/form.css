@@ -248,3 +248,18 @@ textarea {
     display: grid;
     grid-template-columns: 167px 167px 167px;
 }
+
+.error-field {
+    border: 1px red solid;
+}
+
+.error {
+    color:#E32636;
+    margin-top: -25px;
+    position: absolute;
+    font-weight: 500;
+    text-transform: none;
+    font-size: 12px;
+    letter-spacing: 0.25px;
+    line-height: 16px;
+}
