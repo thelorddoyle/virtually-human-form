@@ -44,6 +44,8 @@ export const DatePicker = ({values, convertDate}) => {
                 setSelectedMonth(month)
                 setActiveMonth(false)
                 chooseDayListArg(month)
+                changeButtonBorder('monthButton')
+                toggleButtonClass('monthButton')
                 convertDate(Number(selectedDay), Number(getNumOfMonth[month]), Number(selectedYear))}}> 
                 {month} 
             </div>
@@ -56,6 +58,8 @@ export const DatePicker = ({values, convertDate}) => {
             <div key={day} className='dropdown-item' onClick={(e) => {
                 setSelectedDay(day)
                 setActiveDay(false)
+                changeButtonBorder('dayButton')
+                toggleButtonClass('dayButton')
                 convertDate(Number(day), Number(getNumOfMonth[selectedMonth]), Number(selectedYear))}}>
                 {day} 
             </div>
@@ -67,11 +71,29 @@ export const DatePicker = ({values, convertDate}) => {
             <div key={year} className='dropdown-item' onClick={(e) => {
                 setSelectedYear(year)
                 setActiveYear(false)
+                changeButtonBorder('yearButton')
+                toggleButtonClass('yearButton')
                 convertDate(Number(selectedDay), Number(getNumOfMonth[selectedMonth]), Number(year))}}>
                 {year} 
             </div>
         )
     })
+
+    const changeButtonBorder = (divId) => {
+        document.getElementById(divId).style.border = 'solid 1px green'
+    }
+
+    const toggleButtonClass = (divId) => {
+        if (document.getElementById(divId)) {
+            let myDiv = document.getElementById(divId).className
+            if (myDiv === 'dropdown-btn') {
+                document.getElementById(divId).classList.add('dropdown-btn-active')
+                // document.getElementById(divId).classList.remove('dropdown-btn')
+            } else if (myDiv === 'dropdown-btn dropdown-btn-active') {
+                document.getElementById(divId).classList.remove('dropdown-btn-active')
+            }
+        } 
+    }
 
     return(
         <label htmlFor="selectYourDateOfBirth">SELECT YOUR DATE OF BIRTH* 
@@ -79,7 +101,9 @@ export const DatePicker = ({values, convertDate}) => {
         <div className='inline-grid'>
 
             <div className='dropdown'>
-                <div className="dropdown-btn" onClick={e => setActiveMonth(!isActiveMonth)}>
+                <div id='monthButton' className="dropdown-btn" onClick={e => {
+                    setActiveMonth(!isActiveMonth)
+                    toggleButtonClass('monthButton')}}>
                     {selectedMonth}
                 </div>
                     <span className='svg-arrow'></span>
@@ -91,7 +115,9 @@ export const DatePicker = ({values, convertDate}) => {
             </div>
 
             <div className='dropdown'>
-                <div className="dropdown-btn" onClick={e => setActiveDay(!isActiveDay)}>
+                <div id='dayButton' className="dropdown-btn" onClick={e => {
+                    setActiveDay(!isActiveDay)
+                    toggleButtonClass('dayButton')}}>
                     {selectedDay}
                 </div>
                     <span className='svg-arrow'></span>
@@ -103,7 +129,9 @@ export const DatePicker = ({values, convertDate}) => {
             </div>
 
             <div className='dropdown'>
-                <div className="dropdown-btn" onClick={e => setActiveYear(!isActiveYear)}>
+                <div id='yearButton' className="dropdown-btn" onClick={e => {
+                    setActiveYear(!isActiveYear)
+                    toggleButtonClass('yearButton')}}>
                     {selectedYear}
                 </div>
                     <span className='svg-arrow'></span>

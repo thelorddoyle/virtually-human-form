@@ -41,7 +41,6 @@ const ImageUpload = () => {
 
         imageUploadElement.addEventListener('drop', e => {
             e.preventDefault()
-            // console.log(e.dataTransfer.files)
             if (e.dataTransfer.files.length) {
                 inputElement.files = e.dataTransfer.files;
                 updateThumbnail(imageUploadElement, e.dataTransfer.files[0])
@@ -89,6 +88,10 @@ const ImageUpload = () => {
 
             if (thumbnailElement) {
                 imageUploadElement.querySelector('.image-upload-thumb').remove();
+                let promptElement = document.createElement('span');
+                promptElement.classList.add('image-upload-prompt');
+                promptElement.textContent = 'Drop file here or click to upload'
+                imageUploadElement.appendChild(promptElement);
             }
 
         })
