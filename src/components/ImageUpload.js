@@ -1,6 +1,8 @@
+import imgIcon from '../images/imgIcon.png'
+
 import React, { useEffect } from 'react';
 
-const ImageUpload = () => {
+const ImageUpload = ({setImage, resetImage, setResetImage}) => {
 
     let imageUploadElement;
     let inputElement;
@@ -73,6 +75,7 @@ const ImageUpload = () => {
                 reader.readAsDataURL(file);
                 reader.onload = () => {
                     thumbnailElement.style.backgroundImage = `url('${reader.result}')`
+                    setImage({img: `url('${reader.result}')`})
                 }
             } else {
                 thumbnailElement.style.backgroundImage = null;
@@ -101,16 +104,44 @@ const ImageUpload = () => {
 
     }, [imageUploadElement, inputElement, removeButton])
 
+    useEffect(() => {
+        let imageElement = document.querySelector('.image-upload')
+        let thumbnailElement = imageElement.querySelector('.image-upload-thumb');
+
+        console.log('reset image is ', resetImage)
+
+        if (resetImage) {
+            if (thumbnailElement) {
+                imageElement.querySelector('.image-upload-thumb').remove();
+                let promptElement = document.createElement('span');
+                promptElement.classList.add('image-upload-prompt');
+                promptElement.textContent = 'Drop file here or click to upload'
+                imageElement.appendChild(promptElement);
+            }
+        setResetImage(false)
+        }
+
+
+
+    }, [resetImage, setResetImage])
+
       return (
           <div className='image-container' >
-          <label className='image-label'>IMAGE</label>
+
+            <label className='image-label'>IMAGE</label>
+
             <div className='image-upload'>
+                <div className='image-icon'>
+                    <img src={imgIcon} alt="imageIcon" className='camera' />
+                </div>
                 <span className='image-upload-prompt'>Drop file here or click to upload</span>
                 <input type="file" name='myFile' className='image-upload-input' accept="image/*" />
             </div>
+
             <div>
                 <button className='remove-button'>Remove</button>
             </div>
+
           </div>
       )
 

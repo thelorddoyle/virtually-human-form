@@ -1,4 +1,12 @@
+.image-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 75px;
+}
+
 .image-upload {
+    position: relative;
     max-width: 100px;
     height: 100px;
     display: flex;
@@ -18,6 +26,12 @@
       border-style: dashed;
   }
 
+  .image-upload-prompt {
+      font-weight: 400;
+      padding: 0 10px;
+      padding-top: 5px;
+  }
+
   .image-upload-input {
       display: none;
   }
@@ -33,16 +47,38 @@
     position: relative;
   }
 
-  .image-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-  }
   
   .image-upload {
       margin-top: 10px;
   }
 
   .remove-button {
-      margin-top: 10px;
+    background: none;
+    color: rgba(240, 248, 255, 0.64);
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    outline: inherit;
+    margin-top: 15px;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .image-icon {
+      position: absolute;
+      top: 0;
+      left: 70px;
+      z-index: 10;
+      height: 30px;
+      width: 30px;
+      background-color: #2A2E35;
+      border-radius: 50%;
+  }
+
+  .camera {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%,-50%);
   }

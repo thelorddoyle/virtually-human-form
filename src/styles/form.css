@@ -87,14 +87,21 @@ textarea {
 
 .form-grid {
     display: grid;
+    width: 100%;
+    height: 100%;
     padding-left: 100px;
     padding-right: 100px;
     padding-top: 100px;
     grid-template-columns: 1fr 1fr;
+    justify-items: start;
 }
 
 .form-grid .form-grid-left {
     padding-left: 30%;
+}
+
+.form-grid .form-grid-right {
+    padding-left: 200px;
 }
 
 .button-container {
@@ -306,9 +313,9 @@ textarea {
 .success-banner-showing {
     opacity: 0; 
     display: inline;
-    position: absolute;
+    position: fixed;
     top: 0;
-    padding: 20px;
+    padding: 20px 0px;
     width: 100%;
     text-align: center;
     background: linear-gradient(89.97deg, rgba(39, 177, 138, 0.38) 0%, rgba(39, 177, 138, 0.68) 114.46%), #2A2E35;

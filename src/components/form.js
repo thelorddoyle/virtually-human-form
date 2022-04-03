@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { DatePicker } from "./formComponents/DatePicker"
 import { Validate } from '../helpers/validators'
 import { SuccessBanner } from './formComponents/SuccessBanner'
@@ -19,13 +19,21 @@ function Form () {
         email: 'dlorddoyle@gmail.com',
         phone: '+61 451 087 593',
         dob: new Date(1988, 9, 14),
-        bio: 'lorem ipsum lorem ipsum'
+        bio: 'lorem ipsum lorem ipsum',
+        img: ''
     }
 
     // state variables
     const [values, setValues] = useState({...defaultValues})
     const [isValid, setIsValid] = useState(true)
     const [isSuccess, setIsSuccess] = useState(false)
+    const [resetImage, setResetImage] = useState(false)
+    const [image, setImage] = useState('')
+
+    // this useEffect listens for a change in the image from the imageUpload and gives it to our values state
+    useEffect(() => {
+        setValues({...values, img: image})
+    }, [values, image])
 
     // change & submit handles
     const onChange = (ev) => {
@@ -49,16 +57,17 @@ function Form () {
 
         if (isValid) {
             console.log(values)
-            console.log('IsValid: ', isValid)
             setIsSuccess(true)
         } else {
             setIsSuccess(false)
         }
-
     }
 
     // discard Changes handler
-    const discardChanges = () => {
+    const discardChanges = (ev) => {
+        ev.preventDefault()
+        setResetImage(true)
+        setImage('')
         setValues(defaultValues);
     }
 
@@ -74,24 +83,18 @@ function Form () {
                     <form onSubmit={onSubmit}>
 
                         <FirstName values={values} onChange={onChange} sendValidation={sendValidation} />
-
                         <LastName values={values} onChange={onChange} sendValidation={sendValidation} />
-
                         <Email values={values} onChange={onChange} sendValidation={sendValidation} />
-
                         <Phone values={values} onChange={onChange} sendValidation={sendValidation} />
-
                         <DatePicker values={values} convertDate={convertDate} />
-
                         <Bio values={values} onChange={onChange} sendValidation={sendValidation} />
-
                         <Buttons discardChanges={discardChanges} />
 
                     </form>
                 </div>
 
                 <div className="form-grid-right">
-                    <ImageUpload />
+                    <ImageUpload setImage={setImage} resetImage={resetImage} setResetImage={setResetImage} />
                 </div>
 
             </div>
