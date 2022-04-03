@@ -91,6 +91,7 @@ export const DatePicker = ({values, convertDate}) => {
                 // document.getElementById(divId).classList.remove('dropdown-btn')
             } else if (myDiv === 'dropdown-btn dropdown-btn-active') {
                 document.getElementById(divId).classList.remove('dropdown-btn-active')
+                document.getElementById(divId).style = ''
             }
         } 
     }
