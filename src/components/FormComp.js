@@ -33,7 +33,7 @@ function Form () {
     // this useEffect listens for a change in the image from the imageUpload and gives it to our values state
     useEffect(() => {
         setValues({...values, img: image})
-    }, [values, image])
+    }, [image])
 
     // change & submit handles
     const onChange = (ev) => {
