@@ -1,149 +1,101 @@
 import imgIcon from '../../images/imgIcon.png'
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
+import { resetImageHelper, updateThumbnail } from './../../helpers/imageUploadHelpers'
 
 const ImageUpload = ({setImage, resetImage, setResetImage}) => {
 
-    let imageUploadElement;
-    let inputElement;
-    let removeButton;
+    const uploadRef = useRef();
+    const uploadInputRef = useRef();
+    const removeButtonRef = useRef();
+    let dragOptions = ['dragend', 'dragleave']
     
-    // this useEffect triggers on the first render, so that after render I can obtain my elements to use later
-    // TODO: complete transfer to useRef
+    // listens for resetImage TODO: can tie this up with state to tidy it up
     useEffect(() => {
-        // get the drop zone element for the image upload
-        imageUploadElement = document.querySelector('.image-upload');
+        resetImageHelper(resetImage, setResetImage, uploadRef)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [resetImage])
 
-        // get the input element itself
-        inputElement = document.querySelector('.image-upload-input');
+    // check to see if the DOM elements have been rendered
+    if (uploadRef && 
+        uploadRef.current && 
+        uploadInputRef && 
+        uploadInputRef.current && 
+        removeButtonRef && 
+        removeButtonRef.current) {
 
-        // enable click event on the dropzone as if it was the input element
-        imageUploadElement.addEventListener('click', e => {
+        let uploadElement = uploadRef.current
+        let inputElement = uploadInputRef.current
+
+        // make it so image can be clicked on to upload images too
+        uploadElement.addEventListener('click', e => {
             inputElement.click();
         })
 
-        removeButton = document.querySelector('.remove-button')
-    }, [])
-    
-    useEffect(() => {
-
-        // get all event types for drag, so we can change border at relevant times
-        let dragOptions = ['dragend', 'dragleave']
-
         // to turn border solid when we drag over
-        imageUploadElement.addEventListener('dragover', e => {
+        uploadElement.addEventListener('dragover', e => {
             e.preventDefault()
-            imageUploadElement.classList.add('image-upload-over');
+            uploadElement.classList.add('image-upload-over');
         })
 
         // this uses the dragOptions to ensure we have the correct behaviour for the border
         dragOptions.forEach(type => {
-            imageUploadElement.addEventListener(type, e => {
-                imageUploadElement.classList.remove('image-upload-over')
+            uploadElement.addEventListener(type, e => {
+                uploadElement.classList.remove('image-upload-over')
             })
         })
 
-        // handles file being stored in to inputElement.files when an image is dropped on to the imageUploadElement
-        imageUploadElement.addEventListener('drop', e => {
+        // handles file being stored in to inputElement.files when an image is dropped on to the uploadElement
+        uploadElement.addEventListener('drop', e => {
             e.preventDefault()
             if (e.dataTransfer.files.length) {
                 inputElement.files = e.dataTransfer.files;
-                updateThumbnail(imageUploadElement, e.dataTransfer.files[0])
+                updateThumbnail(uploadElement, e.dataTransfer.files[0], setImage)
             }
-
-            imageUploadElement.classList.remove('image-upload-over');
+            uploadElement.classList.remove('image-upload-over');
         })
-
-        function updateThumbnail(imageUploadElement, file) {
-            let thumbnailElement = imageUploadElement.querySelector('.image-upload-thumb');
-
-            // first time, remove the prompt
-            if (imageUploadElement.querySelector('.image-upload-prompt')) {
-                imageUploadElement.querySelector('.image-upload-prompt').remove();
-            }
-
-            // first time round, there won't be one so we have to make it
-            if (!thumbnailElement) {
-                thumbnailElement = document.createElement('div');
-                thumbnailElement.classList.add('image-upload-thumb');
-                imageUploadElement.appendChild(thumbnailElement);
-            }
-
-            // show actual thumbnail image
-            if (file.type.startsWith("image/")) {
-                const reader = new FileReader();
-                reader.readAsDataURL(file);
-                reader.onload = () => {
-                    thumbnailElement.style.backgroundImage = `url('${reader.result}')`
-                    setImage({img: `url('${reader.result}')`})
-                }
-            } else {
-                thumbnailElement.style.backgroundImage = null;
-            }
-
-        }
-
+        
+        // send the correct DOM element, the file itself and the setImage function to updateThumbnail
         inputElement.addEventListener('change', e => {
             if (inputElement.files.length) {
-                updateThumbnail(imageUploadElement, inputElement.files[0])
+                updateThumbnail(uploadElement, inputElement.files[0], setImage)
             }
         })
 
-        removeButton.addEventListener('click', e => {
-            let thumbnailElement = imageUploadElement.querySelector('.image-upload-thumb');
-
+        // if someone clicks on the remove button, remove the image and replace it with the text prompt
+        removeButtonRef.current.addEventListener('click', e => {
+            let thumbnailElement = uploadElement.querySelector('.image-upload-thumb');
+                
+            // checks if there is a thumbnail element uploaded before starting the process of removing one
             if (thumbnailElement) {
-                imageUploadElement.querySelector('.image-upload-thumb').remove();
+                uploadElement.querySelector('.image-upload-thumb').remove();
                 let promptElement = document.createElement('span');
                 promptElement.classList.add('image-upload-prompt');
                 promptElement.textContent = 'Drop file here or click to upload'
-                imageUploadElement.appendChild(promptElement);
-            }
-
-        })
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [imageUploadElement, inputElement, removeButton])
-
-    useEffect(() => {
-        let imageElement = document.querySelector('.image-upload')
-        let thumbnailElement = imageElement.querySelector('.image-upload-thumb');
-
-        if (resetImage) {
-            if (thumbnailElement) {
-                imageElement.querySelector('.image-upload-thumb').remove();
-                let promptElement = document.createElement('span');
-                promptElement.classList.add('image-upload-prompt');
-                promptElement.textContent = 'Drop file here or click to upload'
-                imageElement.appendChild(promptElement);
-            }
-        setResetImage(false)
+                uploadElement.appendChild(promptElement);
+                }
+            })
         }
-
-
-
-    }, [resetImage, setResetImage])
 
       return (
           <div data-testid="image-container" className='image-container' >
 
             <label className='image-label'>IMAGE</label>
 
-            <div className='image-upload'>
+            <div ref={uploadRef} className='image-upload'>
                 <div className='image-icon'>
                     <img src={imgIcon} alt="imageIcon" className='camera' />
                 </div>
                 <span className='image-upload-prompt'>Drop file here or click to upload</span>
-                <input type="file" name='myFile' className='image-upload-input' accept="image/*" />
+                <input ref={uploadInputRef} type="file" name='myFile' className='image-upload-input' accept="image/*" />
             </div>
 
             <div>
-                <button className='remove-button'>Remove</button>
+                <button ref={removeButtonRef} className='remove-button'>Remove</button>
             </div>
 
           </div>
       )
-
 }
 
 export default ImageUpload;
