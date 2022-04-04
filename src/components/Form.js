@@ -27,7 +27,6 @@ function Form () {
     const [values, setValues] = useState({...defaultValues})
     const [isValid, setIsValid] = useState(true)
     const [isSuccess, setIsSuccess] = useState(false)
-    const [resetImage, setResetImage] = useState(false)
     const [image, setImage] = useState('')
 
     // this useEffect listens for a change in the image from the imageUpload and gives it to our values state
@@ -67,7 +66,6 @@ function Form () {
     // discard Changes handler
     const discardChanges = (ev) => {
         ev.preventDefault()
-        setResetImage(true)
         setImage('')
         setValues(defaultValues);
     }
@@ -95,7 +93,7 @@ function Form () {
                 </div>
 
                 <div className="form-grid-right">
-                    <ImageUpload setImage={setImage} resetImage={resetImage} setResetImage={setResetImage} />
+                    <ImageUpload image={image} setImage={setImage} />
                 </div>
 
             </div>

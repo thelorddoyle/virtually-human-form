@@ -27,11 +27,10 @@ export const updateThumbnail = (imageUploadElement, file, setImage) => {
     }
 };
 
-export const resetImageHelper = (resetImage, setResetImage, uploadRef) => {
+export const resetImageHelper = (uploadRef) => {
 
     let thumbnailElement = uploadRef.current.querySelector('.image-upload-thumb');
 
-    if (resetImage) {
         if (thumbnailElement) {
             uploadRef.current.querySelector('.image-upload-thumb').remove();
             let promptElement = document.createElement('span');
@@ -39,7 +38,4 @@ export const resetImageHelper = (resetImage, setResetImage, uploadRef) => {
             promptElement.textContent = 'Drop file here or click to upload'
             uploadRef.current.appendChild(promptElement);
         }
-    setResetImage(false)
-    
     }
-}

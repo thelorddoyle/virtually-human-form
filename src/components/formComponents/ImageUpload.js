@@ -3,7 +3,7 @@ import imgIcon from '../../images/imgIcon.png'
 import React, { useEffect, useRef } from 'react';
 import { resetImageHelper, updateThumbnail } from './../../helpers/imageUploadHelpers'
 
-const ImageUpload = ({setImage, resetImage, setResetImage}) => {
+const ImageUpload = ({image, setImage }) => {
 
     const uploadRef = useRef();
     const uploadInputRef = useRef();
@@ -12,9 +12,11 @@ const ImageUpload = ({setImage, resetImage, setResetImage}) => {
     
     // listens for resetImage TODO: can tie this up with state to tidy it up
     useEffect(() => {
-        resetImageHelper(resetImage, setResetImage, uploadRef)
+        if (image === '') {
+            resetImageHelper(uploadRef)
+        }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [resetImage])
+    }, [image])
 
     // check to see if the DOM elements have been rendered
     if (uploadRef && 
