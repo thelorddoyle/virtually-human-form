@@ -1,4 +1,4 @@
-import imgIcon from '../images/imgIcon.png'
+import imgIcon from '../../images/imgIcon.png'
 
 import React, { useEffect } from 'react';
 

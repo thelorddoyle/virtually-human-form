@@ -8,7 +8,7 @@ import { Email } from './formComponents/Email'
 import { Phone } from './formComponents/Phone'
 import { Bio } from './formComponents/Bio'
 import { Buttons } from './formComponents/Buttons'
-import ImageUpload from './ImageUpload'
+import ImageUpload from './formComponents/ImageUpload'
 
 function Form () {
 
