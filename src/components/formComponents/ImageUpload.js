@@ -64,20 +64,11 @@ const ImageUpload = ({image, setImage }) => {
             }
         })
 
-        // if someone clicks on the remove button, remove the image and replace it with the text prompt
+        // if someone clicks on the remove button, set image to blank which prompts the useEffect above to manipulate the DOM
         removeButtonRef.current.addEventListener('click', e => {
-            let thumbnailElement = uploadElement.querySelector('.image-upload-thumb');
-                
-            // checks if there is a thumbnail element uploaded before starting the process of removing one
-            if (thumbnailElement) {
-                uploadElement.querySelector('.image-upload-thumb').remove();
-                let promptElement = document.createElement('span');
-                promptElement.classList.add('image-upload-prompt');
-                promptElement.textContent = 'Drop file here or click to upload'
-                uploadElement.appendChild(promptElement);
-                }
-            })
-        }
+            setImage('')
+        })
+    }
 
       return (
           <div data-testid="image-container" className='image-container' >
