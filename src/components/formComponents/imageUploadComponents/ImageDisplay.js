@@ -16,5 +16,5 @@ export const ImageDisplay = ({uploadRef, imgIcon, uploadInputRef, removeButtonRe
             <button ref={removeButtonRef} className='remove-button'>Remove</button>
         </div>
     </div>
-    )
-}
+    );
+};

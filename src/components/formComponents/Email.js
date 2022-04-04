@@ -5,5 +5,5 @@ export const Email = ({values, onChange, sendValidation}) => {
             <input onChange={onChange} name='email' type="text" value={values.email} onBlur={sendValidation} />
             <p className="error"></p>
         </label>
-    )
-}
+    );
+};

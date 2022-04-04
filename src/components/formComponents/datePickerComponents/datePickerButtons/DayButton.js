@@ -17,5 +17,5 @@ export const DayButton = ({setActiveDay, isActiveDay, toggleButtonClass, selecte
             </div>
             )}
         </div>
-    )
-}
+    );
+};

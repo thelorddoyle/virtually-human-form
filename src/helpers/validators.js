@@ -16,24 +16,24 @@ export const Validate = (ev, setIsValid, setIsSuccess) => {
     if (fieldName === 'firstName' || fieldName === 'lastName') {
         if (!nameTest.test(fieldValue)) {
             errorMsg = 'This is an invalid name';
-        }
-    } // end of error messages for firstName
+        };
+    }; // end of error messages for firstName
 
     // error messages for email
     if (fieldName === 'email') {
         let email = fieldValue;
         if (!emailTest.test(email)) {
             errorMsg = 'Please use a valid email';
-        }
-    } // end of error messages for email
+        };
+    }; // end of error messages for email
 
     // error messages for phone
     if (fieldName === 'phone') {
         let phone = fieldValue;
         if (!phoneTest.test(phone)) {
             errorMsg = 'Please use a valid phone number';
-        }
-    } // end of error messages for phone
+        };
+    }; // end of error messages for phone
 
     if (fieldName !== '') {
         if (fieldSplit === 0) {
@@ -42,8 +42,8 @@ export const Validate = (ev, setIsValid, setIsSuccess) => {
             errorMsg = 'Field cannot contain only spaces';
         } else if (!startAndEndTest.test(fieldValue)) {
             errorMsg = 'Field cannot begin or end with space character';
-        }
-    }
+        };
+    };
 
     // error or success conditional
     // if there is an error found in validations, show in the Form component. If not, reset Form field to remove error if there is one
@@ -51,13 +51,13 @@ export const Validate = (ev, setIsValid, setIsSuccess) => {
         ev.target.nextElementSibling.textContent = errorMsg;
         ev.target.className = 'error-field';
         // by setting isValid (in Form component) as false, the form will not be able to be saved
-        setIsValid(false)
-        setIsSuccess(false)
+        setIsValid(false);
+        setIsSuccess(false);
     } else {
         ev.target.nextElementSibling.textContent = '';
         ev.target.className = '';
         // by setting isValid (in Form component) as true, the form can be saved and success message can be shown
-        setIsValid(true)
-        setIsSuccess(false)
-    }
-}
+        setIsValid(true);
+        setIsSuccess(false);
+    };
+};

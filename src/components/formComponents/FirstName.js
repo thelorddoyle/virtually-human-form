@@ -5,5 +5,5 @@ export const FirstName = ({values, onChange, sendValidation}) => {
             <input type="text" name='firstName' value={values.firstName} onChange={onChange} onBlur={sendValidation} />
             <p className="error"></p>
         </label>
-    )
-}
+    );
+};

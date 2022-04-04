@@ -2,15 +2,15 @@ import { useEffect, useState } from "react"
 
 export const SuccessBanner = ({isSuccess}) => {
 
-    const [bannerClassName, setIsBannerClassName] = useState('success-banner-hidden')
+    const [bannerClassName, setIsBannerClassName] = useState('success-banner-hidden');
 
     useEffect(() => {
         if (isSuccess) {
-            setIsBannerClassName('success-banner-showing')
+            setIsBannerClassName('success-banner-showing');
         } else {
-            setIsBannerClassName('success-banner-hidden')
+            setIsBannerClassName('success-banner-hidden');
         }
-    }, [isSuccess])
+    }, [isSuccess]);
     
     return (
         <div className="banners">
@@ -19,5 +19,5 @@ export const SuccessBanner = ({isSuccess}) => {
                 Changes have been saved successfully
             </span>
         </div>
-    )
-}
+    );
+};

@@ -17,5 +17,5 @@ export const MonthButton = ({setActiveMonth, isActiveMonth, toggleButtonClass, s
                 </div>
                 )}
         </div>
-    )
-}
+    );
+};

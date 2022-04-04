@@ -17,5 +17,5 @@ export const YearButton = ({setActiveYear, isActiveYear, toggleButtonClass, sele
             </div>
             )}
         </div>
-    )
-}
+    );
+};

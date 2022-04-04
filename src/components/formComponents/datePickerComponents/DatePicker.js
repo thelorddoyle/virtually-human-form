@@ -8,53 +8,53 @@ import { useEffect, useState } from "react"
 
 export const DatePicker = ({values, convertDate}) => {
 
-    const [isActiveMonth, setActiveMonth] = useState(false)
-    const [isActiveDay, setActiveDay] = useState(false)
-    const [isActiveYear, setActiveYear] = useState(false)
-    const [selectedMonth, setSelectedMonth] = useState("")
-    const [selectedDay, setSelectedDay] = useState("")
-    const [selectedYear, setSelectedYear] = useState("")
-    const [dayList, setDayList] = useState([])
+    const [isActiveMonth, setActiveMonth] = useState(false);
+    const [isActiveDay, setActiveDay] = useState(false);
+    const [isActiveYear, setActiveYear] = useState(false);
+    const [selectedMonth, setSelectedMonth] = useState("");
+    const [selectedDay, setSelectedDay] = useState("");
+    const [selectedYear, setSelectedYear] = useState("");
+    const [dayList, setDayList] = useState([]);
 
     useEffect(() => {
-        chooseDayListArg(selectedMonth, selectedYear, setDayList)
+        chooseDayListArg(selectedMonth, selectedYear, setDayList);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [selectedMonth])
+    }, [selectedMonth]);
 
     useEffect(() => {
         setSelectedMonth(getMonthFromNum[values.dob.getMonth()]);
         setSelectedDay(values.dob.getDate());
         setSelectedYear(values.dob.getFullYear());
-    }, [values])
+    }, [values]);
 
     let monthListOptions = monthList.map((month) => {
         // each month is a string, not a number
         return (
             <div key={month} className='dropdown-item' onClick={(e) => {
-                setSelectedMonth(month)
-                setActiveMonth(false)
-                chooseDayListArg(month, selectedYear, setDayList)
-                changeButtonBorder('monthButton')
-                toggleButtonClass('monthButton')
-                convertDate(Number(selectedDay), Number(getNumOfMonth[month]), Number(selectedYear))}}> 
+                setSelectedMonth(month);
+                setActiveMonth(false);
+                chooseDayListArg(month, selectedYear, setDayList);
+                changeButtonBorder('monthButton');
+                toggleButtonClass('monthButton');
+                convertDate(Number(selectedDay), Number(getNumOfMonth[month]), Number(selectedYear));}}> 
                 {month} 
             </div>
-        )
-    })
+        );
+    });
 
     // map out all options for a Day selector, based on which month it is (dayList)
     let dayListOptions = dayList.map((day) => {
         return (
             <div key={day} className='dropdown-item' onClick={(e) => {
-                setSelectedDay(day)
-                setActiveDay(false)
-                changeButtonBorder('dayButton')
-                toggleButtonClass('dayButton')
-                convertDate(Number(day), Number(getNumOfMonth[selectedMonth]), Number(selectedYear))}}>
+                setSelectedDay(day);
+                setActiveDay(false);
+                changeButtonBorder('dayButton');
+                toggleButtonClass('dayButton');
+                convertDate(Number(day), Number(getNumOfMonth[selectedMonth]), Number(selectedYear));}}>
                 {day} 
             </div>
-        )
-    })
+        );
+    });
 
     let yearListOptions = yearList.map((year) => {
         return (
@@ -95,5 +95,5 @@ export const DatePicker = ({values, convertDate}) => {
         </div>
             
         </label>
-    )
-}
+    );
+};

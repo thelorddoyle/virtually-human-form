@@ -5,5 +5,5 @@ export const Buttons = ({discardChanges}) => {
             <button data-testid="save-button" className="save-button" type="submit"><p>Save Changes</p></button>
             <button data-testid="discard-button" className="discard-button" onClick={discardChanges}><p>Discard</p></button>
         </div>
-    )
-}
+    );
+};

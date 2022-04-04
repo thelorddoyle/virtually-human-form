@@ -1,10 +1,7 @@
     // date-based export constants
     export const monthList = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
-    export const checkLeapYear = (year) => {
-        //three conditions to find out the leap year
-        return ((0 === year % 4) && ((0 !== year % 100) || (0 === year % 400)))
-    }
+    export const checkLeapYear = (year) => ((0 === year % 4) && ((0 !== year % 100) || (0 === year % 400)));
 
     export const shortestMonth = [1, 2, 3, 4, 5, 6, 7, 
                                   8, 9, 10, 11, 12, 13, 14, 
@@ -74,28 +71,28 @@
             setDayList(mediumMonth);
         } else if (month === 'February') {
             if (checkLeapYear(year)) {
-                setDayList(leapYear)
+                setDayList(leapYear);
             } else {
-                setDayList(shortestMonth)
+                setDayList(shortestMonth);
             }
         } else if (month === 'January' || month === 'March' || month === 'May' || month === 'July' || month === 'August' || month === 'October' || month === 'December') {
-            setDayList(longestMonth)
-        }
+            setDayList(longestMonth);
+        };
     };
 
     export const toggleButtonClass = (divId) => {
         if (document.getElementById(divId)) {
-            let myDiv = document.getElementById(divId).className
+            let myDiv = document.getElementById(divId).className;
             if (myDiv === 'dropdown-btn') {
-                document.getElementById(divId).classList.add('dropdown-btn-active')
+                document.getElementById(divId).classList.add('dropdown-btn-active');
                 // document.getElementById(divId).classList.remove('dropdown-btn')
             } else if (myDiv === 'dropdown-btn dropdown-btn-active') {
-                document.getElementById(divId).classList.remove('dropdown-btn-active')
-                document.getElementById(divId).style = ''
-            }
-        } 
-    }
+                document.getElementById(divId).classList.remove('dropdown-btn-active');
+                document.getElementById(divId).style = '';
+            };
+        } ;
+    };
 
     export const changeButtonBorder = (divId) => {
-        document.getElementById(divId).style.border = 'solid 1px green'
-    }
+        document.getElementById(divId).style.border = 'solid 1px green';
+    };

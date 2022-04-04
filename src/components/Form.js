@@ -21,54 +21,54 @@ function Form () {
         dob: new Date(1988, 9, 14),
         bio: 'lorem ipsum lorem ipsum',
         img: ''
-    }
+    };
 
     // state variables
-    const [values, setValues] = useState({...defaultValues})
-    const [isValid, setIsValid] = useState(true)
-    const [isSuccess, setIsSuccess] = useState(false)
-    const [image, setImage] = useState('')
+    const [values, setValues] = useState({...defaultValues});
+    const [isValid, setIsValid] = useState(true);
+    const [isSuccess, setIsSuccess] = useState(false);
+    const [image, setImage] = useState('');
 
     // this useEffect listens for a change in the image from the imageUpload and gives it to our values state
     useEffect(() => {
-        setValues({...values, img: image})
+        setValues({...values, img: image});
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [image])
+    }, [image]);
 
     // change & submit handles
     const onChange = (ev) => {
-        setValues({...values, [ev.target.name]: ev.target.value})
-    }
+        setValues({...values, [ev.target.name]: ev.target.value});
+    };
     
     // date converter for pulling in values from DatePicker component
     const convertDate = (day, month, year) => {
-        let valuesDob = values.dob = new Date(year, month, day)
-        setValues({...values, dob: valuesDob})
-    }
+        let valuesDob = values.dob = new Date(year, month, day);
+        setValues({...values, dob: valuesDob});
+    };
     
     // created this so I could take the ev data from the form field and send it along with setIsValid so that I know if both the field & the form are valid or invalid
     const sendValidation = (ev) => {
-        Validate(ev, setIsValid, setIsSuccess)
-    }
+        Validate(ev, setIsValid, setIsSuccess);
+    };
     
     // handle submit which will only submit if form is valid
     const onSubmit = (ev) => {
         ev.preventDefault();
 
         if (isValid) {
-            console.log(values)
-            setIsSuccess(true)
+            console.log(values);
+            setIsSuccess(true);
         } else {
-            setIsSuccess(false)
+            setIsSuccess(false);
         }
-    }
+    };
 
     // discard Changes handler
     const discardChanges = (ev) => {
-        ev.preventDefault()
-        setImage('')
+        ev.preventDefault();
+        setImage('');
         setValues(defaultValues);
-    }
+    };
 
     return(
         <>
@@ -98,7 +98,7 @@ function Form () {
 
             </div>
         </>
-    )
-}
+    );
+};
 
 export default Form;
