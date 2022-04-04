@@ -1,4 +1,4 @@
-export const YearButton = ({setActiveYear, isActiveYear, toggleButtonClass, selectedYear, yearListOptionsNew}) => {
+export const YearButton = ({setActiveYear, isActiveYear, toggleButtonClass, selectedYear, yearListOptions}) => {
 
     return (
         <div data-testid="yearButton" className='dropdown'>
@@ -13,7 +13,7 @@ export const YearButton = ({setActiveYear, isActiveYear, toggleButtonClass, sele
 
             {isActiveYear && (
             <div className="dropdown-content">
-                {yearListOptionsNew}
+                {yearListOptions}
             </div>
             )}
         </div>

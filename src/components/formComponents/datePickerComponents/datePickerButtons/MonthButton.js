@@ -1,4 +1,4 @@
-export const MonthButton = ({setActiveMonth, isActiveMonth, toggleButtonClass, selectedMonth, monthListOptionsNew}) => {
+export const MonthButton = ({setActiveMonth, isActiveMonth, toggleButtonClass, selectedMonth, monthListOptions}) => {
 
     return (
         <div data-testid="monthButton" className='dropdown'>
@@ -13,7 +13,7 @@ export const MonthButton = ({setActiveMonth, isActiveMonth, toggleButtonClass, s
 
                 {isActiveMonth && (
                 <div className="dropdown-content">
-                    {monthListOptionsNew}
+                    {monthListOptions}
                 </div>
                 )}
         </div>

@@ -1,4 +1,4 @@
-import { monthOptions, yearOptions, getNumOfMonth, getMonthFromNum, chooseDayListArg, toggleButtonClass, changeButtonBorder } from '../../../helpers/datePickerHelpers'
+import { monthList, yearList, getNumOfMonth, getMonthFromNum, chooseDayListArg, toggleButtonClass, changeButtonBorder } from '../../../helpers/datePickerHelpers'
 
 import { MonthButton } from './datePickerButtons/MonthButton'
 import { DayButton } from './datePickerButtons/DayButton'
@@ -27,7 +27,7 @@ export const DatePicker = ({values, convertDate}) => {
         setSelectedYear(values.dob.getFullYear());
     }, [values])
 
-    let monthListOptionsNew = monthOptions.map((month) => {
+    let monthListOptions = monthList.map((month) => {
         // each month is a string, not a number
         return (
             <div key={month} className='dropdown-item' onClick={(e) => {
@@ -43,7 +43,7 @@ export const DatePicker = ({values, convertDate}) => {
     })
 
     // map out all options for a Day selector, based on which month it is (dayList)
-    let dayListOptionsNew = dayList.map((day) => {
+    let dayListOptions = dayList.map((day) => {
         return (
             <div key={day} className='dropdown-item' onClick={(e) => {
                 setSelectedDay(day)
@@ -56,7 +56,7 @@ export const DatePicker = ({values, convertDate}) => {
         )
     })
 
-    let yearListOptionsNew = yearOptions.map((year) => {
+    let yearListOptions = yearList.map((year) => {
         return (
             <div key={year} className='dropdown-item' onClick={(e) => {
                 setSelectedYear(year);
@@ -78,19 +78,19 @@ export const DatePicker = ({values, convertDate}) => {
                         isActiveMonth={isActiveMonth} 
                         toggleButtonClass={toggleButtonClass} 
                         selectedMonth={selectedMonth} 
-                        monthListOptionsNew={monthListOptionsNew} />
+                        monthListOptions={monthListOptions} />
 
         <DayButton setActiveDay={setActiveDay} 
                     isActiveDay={isActiveDay} 
                     toggleButtonClass={toggleButtonClass} 
                     selectedDay={selectedDay} 
-                    dayListOptionsNew={dayListOptionsNew}/>
+                    dayListOptions={dayListOptions}/>
 
         <YearButton setActiveYear={setActiveYear} 
                     isActiveYear={isActiveYear}
                     toggleButtonClass={toggleButtonClass}
                     selectedYear={selectedYear}
-                    yearListOptionsNew={yearListOptionsNew}/>
+                    yearListOptions={yearListOptions}/>
 
         </div>
             

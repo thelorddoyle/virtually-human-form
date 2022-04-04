@@ -1,4 +1,4 @@
-export const DayButton = ({setActiveDay, isActiveDay, toggleButtonClass, selectedDay, dayListOptionsNew}) => {
+export const DayButton = ({setActiveDay, isActiveDay, toggleButtonClass, selectedDay, dayListOptions}) => {
 
     return (
         <div data-testid="dayButton" className='dropdown'>
@@ -13,7 +13,7 @@ export const DayButton = ({setActiveDay, isActiveDay, toggleButtonClass, selecte
 
             {isActiveDay && (
             <div className="dropdown-content">
-                {dayListOptionsNew}
+                {dayListOptions}
             </div>
             )}
         </div>
