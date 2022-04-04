@@ -1,18 +1,8 @@
-import { monthOptions, dayOptionsMin, dayOptionsMean, dayOptionsMax, yearOptions, getNumOfMonth, getMonthFromNum } from '../../helpers/datePickerHelpers'
+import { monthOptions, yearOptions, getNumOfMonth, getMonthFromNum, chooseDayListArg, toggleButtonClass, changeButtonBorder } from '../../helpers/datePickerHelpers'
 
 import { useEffect, useState } from "react"
 
 export const DatePicker = ({values, convertDate}) => {
-
-    const chooseDayListArg = (month) => {
-        if (month === 'April' || month === 'June' || month === 'September' || month === 'November') {
-            setDayList(dayOptionsMax);
-        } else if (month !== 'August') {
-            setDayList(dayOptionsMean)
-        } else {
-            setDayList(dayOptionsMin)
-        }
-    }
 
     const [isActiveMonth, setActiveMonth] = useState(false)
     const [isActiveDay, setActiveDay] = useState(false)
@@ -23,13 +13,9 @@ export const DatePicker = ({values, convertDate}) => {
     const [dayList, setDayList] = useState([])
 
     useEffect(() => {
-        try {
-            chooseDayListArg(selectedMonth)
-        } catch(err) {
-            console.log(err)
-        }
+        chooseDayListArg(selectedMonth, selectedYear, setDayList)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    }, [selectedMonth])
 
     useEffect(() => {
         setSelectedMonth(getMonthFromNum[values.dob.getMonth()]);
@@ -43,7 +29,7 @@ export const DatePicker = ({values, convertDate}) => {
             <div key={month} className='dropdown-item' onClick={(e) => {
                 setSelectedMonth(month)
                 setActiveMonth(false)
-                chooseDayListArg(month)
+                chooseDayListArg(month, selectedYear, setDayList)
                 changeButtonBorder('monthButton')
                 toggleButtonClass('monthButton')
                 convertDate(Number(selectedDay), Number(getNumOfMonth[month]), Number(selectedYear))}}> 
@@ -78,23 +64,6 @@ export const DatePicker = ({values, convertDate}) => {
             </div>
         )
     })
-
-    const changeButtonBorder = (divId) => {
-        document.getElementById(divId).style.border = 'solid 1px green'
-    }
-
-    const toggleButtonClass = (divId) => {
-        if (document.getElementById(divId)) {
-            let myDiv = document.getElementById(divId).className
-            if (myDiv === 'dropdown-btn') {
-                document.getElementById(divId).classList.add('dropdown-btn-active')
-                // document.getElementById(divId).classList.remove('dropdown-btn')
-            } else if (myDiv === 'dropdown-btn dropdown-btn-active') {
-                document.getElementById(divId).classList.remove('dropdown-btn-active')
-                document.getElementById(divId).style = ''
-            }
-        } 
-    }
 
     return(
         <label htmlFor="selectYourDateOfBirth">SELECT YOUR DATE OF BIRTH* 

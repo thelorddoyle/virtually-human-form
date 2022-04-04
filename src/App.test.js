@@ -1,5 +1,4 @@
 /* eslint-disable testing-library/no-debugging-utils */
-import * as ReactDOMClient from 'react-dom/client';
 import { render, screen, within } from '@testing-library/react';
 
 import App from './App';
@@ -7,14 +6,16 @@ import App from './App';
 // although I understand it is not best practice to test assertions like this, I fixed my testing suite with regards to React 18 using this page and started to learn how to test
 
 test('App and form will render along with all internal components', () => {
-    render(<App />);
-    const appContainer = screen.getByTestId('app-container')
-    expect(appContainer).toBeInTheDocument()
 
-    const settingsHeader = screen.getByRole('heading', {  name: /settings/i})
+    render(<App />);
+
+    const appContainer = screen.getByTestId('app-container');
+    expect(appContainer).toBeInTheDocument();
+
+    const settingsHeader = screen.getByRole('heading', {  name: /settings/i});
     expect(settingsHeader).toBeInTheDocument();
 
-    const firstNameTitle = screen.getByText(/first name\*/i)
+    const firstNameTitle = screen.getByText(/first name\*/i);
     expect(firstNameTitle).toBeInTheDocument();
 
     const firstNameView = screen.getByText(/first name\*/i);
@@ -33,17 +34,17 @@ test('App and form will render along with all internal components', () => {
     const phoneBox = within(phoneView).getByRole('textbox');
     expect(phoneBox).toBeInTheDocument();
 
-    const datePickerView = screen.getByText(/select your date of birth\*/i)
-    expect(datePickerView).toBeInTheDocument()
+    const datePickerView = screen.getByText(/select your date of birth\*/i);
+    expect(datePickerView).toBeInTheDocument();
     
-    const dobMonth = screen.getByTestId('monthButton')
-    expect(dobMonth).toBeInTheDocument()
+    const dobMonth = screen.getByTestId('monthButton');
+    expect(dobMonth).toBeInTheDocument();
 
-    const dobDay = screen.getByTestId('dayButton')
-    expect(dobDay).toBeInTheDocument()
+    const dobDay = screen.getByTestId('dayButton');
+    expect(dobDay).toBeInTheDocument();
 
-    const dobYear = screen.getByTestId('yearButton')
-    expect(dobYear).toBeInTheDocument()
+    const dobYear = screen.getByTestId('yearButton');
+    expect(dobYear).toBeInTheDocument();
 
     const bioView = screen.getByText(/bio\*/i);
     const bioBox = within(bioView).getByRole('textbox');
@@ -52,10 +53,9 @@ test('App and form will render along with all internal components', () => {
     const imageUploadView = screen.getByTestId('image-container');
     expect(imageUploadView).toBeInTheDocument();
     
-    const saveButton = screen.getByRole('button', { name: /save changes/i })
+    const saveButton = screen.getByRole('button', { name: /save changes/i });
     expect(saveButton).toBeInTheDocument();
 
-    const discardButton = screen.getByRole('button', { name: /discard/i })
+    const discardButton = screen.getByRole('button', { name: /discard/i });
     expect(discardButton).toBeInTheDocument();
-    
-})
+});
