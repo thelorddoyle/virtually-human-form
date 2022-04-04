@@ -1,4 +1,8 @@
-import { monthOptions, yearOptions, getNumOfMonth, getMonthFromNum, chooseDayListArg, toggleButtonClass, changeButtonBorder } from '../../helpers/datePickerHelpers'
+import { monthOptions, yearOptions, getNumOfMonth, getMonthFromNum, chooseDayListArg, toggleButtonClass, changeButtonBorder } from '../../../helpers/datePickerHelpers'
+
+import { MonthButton } from './datePickerButtons/MonthButton'
+import { DayButton } from './datePickerButtons/DayButton'
+import { YearButton } from './datePickerButtons/YearButton'
 
 import { useEffect, useState } from "react"
 
@@ -55,62 +59,38 @@ export const DatePicker = ({values, convertDate}) => {
     let yearListOptionsNew = yearOptions.map((year) => {
         return (
             <div key={year} className='dropdown-item' onClick={(e) => {
-                setSelectedYear(year)
-                setActiveYear(false)
-                changeButtonBorder('yearButton')
-                toggleButtonClass('yearButton')
-                convertDate(Number(selectedDay), Number(getNumOfMonth[selectedMonth]), Number(year))}}>
-                {year} 
+                setSelectedYear(year);
+                setActiveYear(false);
+                changeButtonBorder('yearButton');
+                toggleButtonClass('yearButton');
+                convertDate(Number(selectedDay), Number(getNumOfMonth[selectedMonth]), Number(year));}}>
+                {year}
             </div>
-        )
-    })
+        );
+    });
 
     return(
         <label htmlFor="selectYourDateOfBirth">SELECT YOUR DATE OF BIRTH* 
 
         <div className='inline-grid'>
 
-            <div data-testid="monthButton" className='dropdown'>
-                <div id='monthButton' className="dropdown-btn" onClick={e => {
-                    setActiveMonth(!isActiveMonth)
-                    toggleButtonClass('monthButton')}}>
-                    {selectedMonth}
-                </div>
-                    <span className='svg-arrow'></span>
-                    {isActiveMonth && (
-                    <div className="dropdown-content">
-                        {monthListOptionsNew}
-                    </div>
-                    )}
-            </div>
+        <MonthButton setActiveMonth={setActiveMonth} 
+                        isActiveMonth={isActiveMonth} 
+                        toggleButtonClass={toggleButtonClass} 
+                        selectedMonth={selectedMonth} 
+                        monthListOptionsNew={monthListOptionsNew} />
 
-            <div data-testid="dayButton" className='dropdown'>
-                <div id='dayButton' className="dropdown-btn" onClick={e => {
-                    setActiveDay(!isActiveDay)
-                    toggleButtonClass('dayButton')}}>
-                    {selectedDay}
-                </div>
-                    <span className='svg-arrow'></span>
-                    {isActiveDay && (
-                    <div className="dropdown-content">
-                        {dayListOptionsNew}
-                    </div>
-                    )}
-            </div>
+        <DayButton setActiveDay={setActiveDay} 
+                    isActiveDay={isActiveDay} 
+                    toggleButtonClass={toggleButtonClass} 
+                    selectedDay={selectedDay} 
+                    dayListOptionsNew={dayListOptionsNew}/>
 
-            <div data-testid="yearButton" className='dropdown'>
-                <div id='yearButton' className="dropdown-btn" onClick={e => {
-                    setActiveYear(!isActiveYear)
-                    toggleButtonClass('yearButton')}}>
-                    {selectedYear}
-                </div>
-                    <span className='svg-arrow'></span>
-                    {isActiveYear && (
-                    <div className="dropdown-content">
-                        {yearListOptionsNew}
-                    </div>
-                    )}
-            </div>
+        <YearButton setActiveYear={setActiveYear} 
+                    isActiveYear={isActiveYear}
+                    toggleButtonClass={toggleButtonClass}
+                    selectedYear={selectedYear}
+                    yearListOptionsNew={yearListOptionsNew}/>
 
         </div>
             

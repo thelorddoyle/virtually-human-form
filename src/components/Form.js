@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { DatePicker } from "./formComponents/DatePicker"
+import { DatePicker } from "./formComponents/datePickerComponents/DatePicker"
 import { Validate } from '../helpers/validators'
 import { SuccessBanner } from './formComponents/SuccessBanner'
 import { FirstName } from './formComponents/FirstName'
