@@ -1,7 +1,8 @@
-import imgIcon from '../../images/imgIcon.png'
+import imgIcon from '../../../images/imgIcon.png'
+import { ImageDisplay } from './ImageDisplay'
 
 import React, { useEffect, useRef } from 'react';
-import { resetImageHelper, updateThumbnail } from './../../helpers/imageUploadHelpers'
+import { resetImageHelper, updateThumbnail } from '../../../helpers/imageUploadHelpers'
 
 const ImageUpload = ({image, setImage }) => {
 
@@ -71,20 +72,10 @@ const ImageUpload = ({image, setImage }) => {
     }
 
     return (
-        <div data-testid="image-container" className='image-container' >
-            <label className='image-label'>IMAGE</label>
-            <div ref={uploadRef} className='image-upload'>
-                <div className='image-icon'>
-                    <img src={imgIcon} alt="imageIcon" className='camera' />
-                </div>
-                <span className='image-upload-prompt'>Drop file here or click to upload</span>
-                <input ref={uploadInputRef} type="file" name='myFile' className='image-upload-input' accept="image/*" />
-            </div>
-
-            <div>
-                <button ref={removeButtonRef} className='remove-button'>Remove</button>
-            </div>
-        </div>
+        <ImageDisplay uploadRef={uploadRef} 
+                        imgIcon={imgIcon}
+                        uploadInputRef={uploadInputRef}
+                        removeButtonRef={removeButtonRef}/>
       )
 }
 
