@@ -101,7 +101,7 @@ export const DatePicker = ({values, convertDate}) => {
 
         <div className='inline-grid'>
 
-            <div className='dropdown'>
+            <div data-testid="monthButton" className='dropdown'>
                 <div id='monthButton' className="dropdown-btn" onClick={e => {
                     setActiveMonth(!isActiveMonth)
                     toggleButtonClass('monthButton')}}>
@@ -115,7 +115,7 @@ export const DatePicker = ({values, convertDate}) => {
                     )}
             </div>
 
-            <div className='dropdown'>
+            <div data-testid="dayButton" className='dropdown'>
                 <div id='dayButton' className="dropdown-btn" onClick={e => {
                     setActiveDay(!isActiveDay)
                     toggleButtonClass('dayButton')}}>
@@ -129,7 +129,7 @@ export const DatePicker = ({values, convertDate}) => {
                     )}
             </div>
 
-            <div className='dropdown'>
+            <div data-testid="yearButton" className='dropdown'>
                 <div id='yearButton' className="dropdown-btn" onClick={e => {
                     setActiveYear(!isActiveYear)
                     toggleButtonClass('yearButton')}}>

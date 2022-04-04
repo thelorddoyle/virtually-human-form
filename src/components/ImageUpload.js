@@ -102,13 +102,12 @@ const ImageUpload = ({setImage, resetImage, setResetImage}) => {
 
         })
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [imageUploadElement, inputElement, removeButton])
 
     useEffect(() => {
         let imageElement = document.querySelector('.image-upload')
         let thumbnailElement = imageElement.querySelector('.image-upload-thumb');
-
-        console.log('reset image is ', resetImage)
 
         if (resetImage) {
             if (thumbnailElement) {
@@ -126,7 +125,7 @@ const ImageUpload = ({setImage, resetImage, setResetImage}) => {
     }, [resetImage, setResetImage])
 
       return (
-          <div className='image-container' >
+          <div data-testid="image-container" className='image-container' >
 
             <label className='image-label'>IMAGE</label>
 

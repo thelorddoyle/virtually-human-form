@@ -6,7 +6,7 @@ import './styles/imageUpload.css'
 function App({ callback }) {
   // Callback will be called when the div is first created.
   return (
-    <div className='app' ref={callback}>
+    <div data-testid="app-container" className='app' ref={callback}>
         <Form />
     </div>
   );
