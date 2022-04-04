@@ -10,7 +10,7 @@ const ImageUpload = ({image, setImage }) => {
     const removeButtonRef = useRef();
     let dragOptions = ['dragend', 'dragleave']
     
-    // listens for resetImage TODO: can tie this up with state to tidy it up
+    // listens for resetImage
     useEffect(() => {
         if (image === '') {
             resetImageHelper(uploadRef)
@@ -70,11 +70,9 @@ const ImageUpload = ({image, setImage }) => {
         })
     }
 
-      return (
-          <div data-testid="image-container" className='image-container' >
-
+    return (
+        <div data-testid="image-container" className='image-container' >
             <label className='image-label'>IMAGE</label>
-
             <div ref={uploadRef} className='image-upload'>
                 <div className='image-icon'>
                     <img src={imgIcon} alt="imageIcon" className='camera' />
@@ -86,8 +84,7 @@ const ImageUpload = ({image, setImage }) => {
             <div>
                 <button ref={removeButtonRef} className='remove-button'>Remove</button>
             </div>
-
-          </div>
+        </div>
       )
 }
 
