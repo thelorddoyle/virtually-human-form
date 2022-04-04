@@ -1,4 +1,4 @@
-import Form from './components/Form'
+import Form from './components/FormComp'
 import './styles/general.css'
 import './styles/form.css'
 import './styles/imageUpload.css'
