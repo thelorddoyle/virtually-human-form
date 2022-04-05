@@ -28,15 +28,13 @@ const ImageUpload = ({image, setImage }) => {
     useEffect(() => {
     // check to see if the DOM elements have been rendered
     if (uploadRef && 
-        uploadRef.current && 
         uploadInputRef && 
-        uploadInputRef.current && 
-        removeButtonRef && 
-        removeButtonRef.current) {
+        removeButtonRef) {
 
         // list for drag content
         let uploadElement = uploadRef.current;
         let inputElement = uploadInputRef.current;
+        let removeButton = removeButtonRef.current
         let dragOptions = ['dragend', 'dragleave'];
         setThumb('image-upload-thumb')
         setPrompt('image-upload-prompt')
@@ -77,7 +75,7 @@ const ImageUpload = ({image, setImage }) => {
         });
 
         // if someone clicks on the remove button, set image to blank which prompts the useEffect above to manipulate the DOM
-        removeButtonRef.current.addEventListener('click', e => {
+        removeButton.addEventListener('click', e => {
             setImage('');
         });
 
@@ -118,7 +116,7 @@ const ImageUpload = ({image, setImage }) => {
             });
 
             // if someone clicks on the remove button, set image to blank which prompts the useEffect above to manipulate the DOM
-            removeButtonRef.current.removeEventListener('click', e => {
+            removeButton.removeEventListener('click', e => {
                 setImage('');
             });
         };
