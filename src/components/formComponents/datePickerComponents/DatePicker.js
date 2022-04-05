@@ -30,6 +30,27 @@ export const DatePicker = ({values, convertDate}) => {
         setSelectedYear(values.dob.getFullYear());
     }, [values]);
 
+    useEffect(() => {
+
+        window.addEventListener('click', function(e){   
+            if (e.target.className !== 'dropdown-item' && e.target.id !== 'monthButton' && e.target.id !== 'yearButton' && e.target.id !== 'dayButton') {
+                setActiveMonth(false)
+                setActiveYear(false)
+                setActiveDay(false)
+            }
+        });
+
+        return () => {
+            window.removeEventListener('click', function(e){   
+                if (e.target.className !== 'dropdown-item' && e.target.id !== 'monthButton' && e.target.id !== 'yearButton' && e.target.id !== 'dayButton') {
+                    setActiveMonth(false)
+                    setActiveYear(false)
+                    setActiveDay(false)
+                }
+            });
+        }
+    }, [])
+
     let monthListOptions = monthList.map((month) => {
         // each month is a string, not a number
         return (

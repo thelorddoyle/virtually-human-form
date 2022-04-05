@@ -1,9 +1,25 @@
+import { useEffect, useState } from "react";
+
 export const YearButton = ({setActiveYear, isActiveYear, toggleButtonClass, selectedYear, yearListOptions}) => {
+
+    const [borderClass, setBorderClass] = useState('')
+
+    useEffect(() => {
+        setBorderClass('dropdown-btn')
+    }, [])
+
+    useEffect(() => {
+        if (isActiveYear) {
+            setBorderClass('dropdown-btn dropdown-btn-active')
+        } else {
+            setBorderClass('dropdown-btn')
+        }
+    }, [isActiveYear])
 
     return (
         <div data-testid="yearButton" className='dropdown'>
 
-            <div id='yearButton' className="dropdown-btn" onClick={e => {
+            <div tabIndex="0" id='yearButton' className={borderClass} onClick={e => {
                 setActiveYear(!isActiveYear)
                 toggleButtonClass('yearButton')}}>
                 {selectedYear}

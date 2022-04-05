@@ -1,18 +1,34 @@
+import { useEffect, useState } from "react";
+
 export const MonthButton = ({setActiveMonth, isActiveMonth, toggleButtonClass, selectedMonth, monthListOptions}) => {
+
+    const [borderClass, setBorderClass] = useState('')
+
+    useEffect(() => {
+        setBorderClass('dropdown-btn')
+    }, [])
+
+    useEffect(() => {
+        if (isActiveMonth) {
+            setBorderClass('dropdown-btn dropdown-btn-active')
+        } else {
+            setBorderClass('dropdown-btn')
+        }
+    }, [isActiveMonth])
 
     return (
         <div data-testid="monthButton" className='dropdown'>
 
-            <div id='monthButton' className="dropdown-btn" onClick={e => {
-                setActiveMonth(!isActiveMonth)
-                toggleButtonClass('monthButton')}}>
-                {selectedMonth}
+            <div tabIndex="0" id='monthButton' className={borderClass} onClick={e => {
+                        setActiveMonth(!isActiveMonth)
+                        toggleButtonClass('monthButton')}}>
+                    {selectedMonth}
             </div>
 
                 <span className='svg-arrow'></span>
 
                 {isActiveMonth && (
-                <div className="dropdown-content">
+                <div id="dropdown-content" className="dropdown-content">
                     {monthListOptions}
                 </div>
                 )}

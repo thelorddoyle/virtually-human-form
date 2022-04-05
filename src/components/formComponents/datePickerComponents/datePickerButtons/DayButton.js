@@ -1,9 +1,25 @@
-export const DayButton = ({setActiveDay, isActiveDay, toggleButtonClass, selectedDay, dayListOptions}) => {
+import { useEffect, useState } from "react";
+
+export const DayButton = ({setActiveDay, isActiveDay, toggleButtonClass, selectedDay, dayListOptions }) => {
+
+    const [borderClass, setBorderClass] = useState('')
+
+    useEffect(() => {
+        setBorderClass('dropdown-btn')
+    }, [])
+
+    useEffect(() => {
+        if (isActiveDay) {
+            setBorderClass('dropdown-btn dropdown-btn-active')
+        } else {
+            setBorderClass('dropdown-btn')
+        }
+    }, [isActiveDay])
 
     return (
         <div data-testid="dayButton" className='dropdown'>
 
-            <div id='dayButton' className="dropdown-btn" onClick={e => {
+            <div tabIndex="0" id='dayButton' className={borderClass} onClick={e => {
                 setActiveDay(!isActiveDay)
                 toggleButtonClass('dayButton')}}>
                 {selectedDay}
