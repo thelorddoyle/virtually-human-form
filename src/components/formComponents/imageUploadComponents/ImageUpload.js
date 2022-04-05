@@ -2,7 +2,7 @@ import imgIcon from '../../../images/imgIcon.png'
 import { ImageDisplay } from './ImageDisplay'
 
 import React, { useEffect, useRef, useState } from 'react';
-import { resetImageHelper } from '../../../helpers/imageUploadHelpers'
+import { resetImageHelper, updateThumbnail } from '../../../helpers/imageUploadHelpers'
 
 const ImageUpload = ({image, setImage }) => {
 
@@ -17,6 +17,7 @@ const ImageUpload = ({image, setImage }) => {
     const [thumb, setThumb] = useState('')
     const [prompt, setPrompt] = useState(true)
 
+    // TODO: remove this handler and just have state being updated
     const handlePrompt = () => {
         if (prompt) {
             promptElement.current.className = 'hide'
@@ -71,7 +72,7 @@ const ImageUpload = ({image, setImage }) => {
             e.preventDefault();
             if (e.dataTransfer.files.length) {
                 inputElement.files = e.dataTransfer.files;
-                updateThumbnail(uploadElement, e.dataTransfer.files[0], setImage);
+                updateThumbnail(thumbnailElement, e.dataTransfer.files[0], setImage, setThumb, setPrompt, handlePrompt);
             }
             uploadElement.classList.remove('image-upload-over');
         });
@@ -79,7 +80,7 @@ const ImageUpload = ({image, setImage }) => {
         // send the correct DOM element, the file itself and the setImage function to updateThumbnail
         inputElement.addEventListener('change', e => {
             if (inputElement.files.length) {
-                updateThumbnail(uploadElement, inputElement.files[0], setImage);
+                updateThumbnail(thumbnailElement, inputElement.files[0], setImage, setThumb, setPrompt, handlePrompt);
             }
         });
 
@@ -89,6 +90,7 @@ const ImageUpload = ({image, setImage }) => {
         });
 
         // I have added this in preparation for the form to be part of a larger app, as we will want to remove EventListeners when we unmount the component
+        // TODO: Is there a cleaner way to do this? Maybe a window.removeEventListener(all???)
         return () => {
             uploadElement.removeEventListener('click', e => {
                 inputElement.click();
@@ -111,7 +113,7 @@ const ImageUpload = ({image, setImage }) => {
                 e.preventDefault();
                 if (e.dataTransfer.files.length) {
                     inputElement.files = e.dataTransfer.files;
-                    updateThumbnail(uploadElement, e.dataTransfer.files[0], setImage);
+                    updateThumbnail(thumbnailElement, e.dataTransfer.files[0], setImage, setThumb, setPrompt, handlePrompt);
                 }
                 uploadElement.classList.remove('image-upload-over');
             });
@@ -119,7 +121,7 @@ const ImageUpload = ({image, setImage }) => {
             // send the correct DOM element, the file itself and the setImage function to updateThumbnail
             inputElement.removeEventListener('change', e => {
                 if (inputElement.files.length) {
-                    updateThumbnail(uploadElement, inputElement.files[0], setImage);
+                    updateThumbnail(thumbnailElement, inputElement.files[0], setImage, setThumb, setPrompt, handlePrompt);
                 }
             });
 
@@ -127,37 +129,10 @@ const ImageUpload = ({image, setImage }) => {
             removeButtonRef.current.removeEventListener('click', e => {
                 setImage('');
             });
-        }
-
-    };
-
-    }, [])
-
-    const updateThumbnail = (imageUploadElement, file, setImage) => {
-
-        // console.log(thumbnailElement)
-    
-        // first time, remove the prompt
-        if (thumbnailElement.current.classList.length === 1) {
-            setThumb('image-upload-thumb show-thumb')
-            setPrompt(false)
-            handlePrompt()
         };
-        
-        // show actual thumbnail image
-        if (file.type.startsWith("image/")) {
-            const reader = new FileReader();
-            reader.readAsDataURL(file);
-            reader.onload = () => {
-                thumbnailElement.current.style.backgroundImage = `url('${reader.result}')`;
-                setImage({img: `url('${reader.result}')`});
-                console.log(thumbnailElement)
-                console.log(promptElement)
-            }
-        } else {
-            thumbnailElement.style.backgroundImage = null;
         };
-    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     return (
         <ImageDisplay uploadRef={uploadRef} 
