@@ -31,7 +31,11 @@ function Form () {
 
     // this useEffect listens for a change in the image from the imageUpload and gives it to our values state
     useEffect(() => {
-        setValues({...values, img: image.img});
+        if (image) {
+            setValues({...values, img: image.img});
+        } else {
+            setValues({...values, img: null})
+        }
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [image]);
 

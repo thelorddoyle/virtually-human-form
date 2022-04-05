@@ -18,11 +18,3 @@ export const updateThumbnail = (thumbnailElement, file, setImage, setThumb, setP
         thumbnailElement.style.backgroundImage = null;
     };
 };
-
-export const resetImageHelper = ( thumbnailElement, setThumb, setPrompt ) => {
-    if (thumbnailElement.current.className === 'image-upload-thumb show-thumb') {
-        thumbnailElement.current.style.backgroundImage = ''
-        setThumb('image-upload-thumb')
-        setPrompt('image-upload-prompt')
-    };
-};

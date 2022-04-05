@@ -6,4 +6,4 @@ const container = document.getElementById('root');
 // Create a root.
 const root = ReactDOMClient.createRoot(container);
 
-root.render(<App callback={() => console.log("Rendered")} />);
+root.render(<App />);
