@@ -1,20 +1,16 @@
 import { updateThumbnail } from "./updateThumbnail";
 
-export const manageEventListeners = (uploadRef, uploadInputRef, removeButtonRef, setThumb, setPrompt, thumbnailElement, setImage) => {
+export const manageEventListeners = (uploadRef, uploadInputRef, removeButtonRef, setThumb, setPrompt, thumbnailElement, setImage, uploadEl, setUploadEl) => {
 
-    if (uploadRef && 
-        uploadRef.current && 
-        uploadInputRef && 
-        uploadInputRef.current && 
-        removeButtonRef && 
-        removeButtonRef.current) {
+    if (uploadRef?.current && uploadInputRef?.current && removeButtonRef?.current) {
 
         // list for drag content
-        let uploadElement = uploadRef.current;
-        let inputElement = uploadInputRef.current;
-        let dragOptions = ['dragend', 'dragleave'];
+        const uploadElement = uploadRef.current;
+        const inputElement = uploadInputRef.current;
+        const dragOptions = ['dragend', 'dragleave'];
         setThumb('image-upload-thumb')
         setPrompt('image-upload-prompt')
+        setUploadEl('image-upload')
 
         // make it so image can be clicked on to upload images too
         uploadElement.addEventListener('click', e => {
@@ -24,13 +20,13 @@ export const manageEventListeners = (uploadRef, uploadInputRef, removeButtonRef,
         // to turn border solid when we drag over
         uploadElement.addEventListener('dragover', e => {
             e.preventDefault();
-            uploadElement.classList.add('image-upload-over');
+            setUploadEl('image-upload image-upload-over')
         });
 
         // this uses the dragOptions to ensure we have the correct behaviour for the border
         dragOptions.forEach(type => {
             uploadElement.addEventListener(type, e => {
-                uploadElement.classList.remove('image-upload-over');
+                setUploadEl('image-upload')
             });
         });
 
@@ -65,13 +61,13 @@ export const manageEventListeners = (uploadRef, uploadInputRef, removeButtonRef,
 
             uploadElement.removeEventListener('dragover', e => {
                 e.preventDefault();
-                uploadElement.classList.add('image-upload-over');
+                setUploadEl('image-upload image-upload-over')
             });
 
             // this uses the dragOptions to ensure we have the correct behaviour for the border
             dragOptions.forEach(type => {
                 uploadElement.removeEventListener(type, e => {
-                    uploadElement.classList.remove('image-upload-over');
+                    setUploadEl('image-upload-over');
                 });
             });
 

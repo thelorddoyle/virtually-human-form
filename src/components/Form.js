@@ -20,7 +20,7 @@ function Form () {
         phone: '+61 451 087 593',
         dob: new Date(1988, 9, 14),
         bio: 'lorem ipsum lorem ipsum',
-        img: ''
+        img: null
     };
 
     // state variables

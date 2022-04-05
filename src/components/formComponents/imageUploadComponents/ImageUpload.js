@@ -1,5 +1,4 @@
 import imgIcon from '../../../images/imgIcon.png'
-import { ImageDisplay } from './ImageDisplay'
 
 import React, { useEffect, useRef, useState } from 'react';
 import { manageEventListeners } from '../../../helpers/imageUpload/manageEventListeners';
@@ -17,31 +16,40 @@ const ImageUpload = ({image, setImage }) => {
     // state variables for toggling image and prompt
     const [thumb, setThumb] = useState('')
     const [prompt, setPrompt] = useState('')
+    const [uploadEl, setUploadEl] = useState('')
     
     // listens for resetImage
     useEffect(() => {
         if (image === null) {
-            resetImageHelper(thumbnailElement, setThumb, setPrompt)
+            resetImageHelper(thumb, thumbnailElement, setThumb, setPrompt)
         }
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [image]);
 
     useEffect(() => {
-        manageEventListeners(uploadRef, uploadInputRef, removeButtonRef, setThumb, setPrompt, thumbnailElement, setImage)
+        manageEventListeners(uploadRef, uploadInputRef, removeButtonRef, setThumb, setPrompt, thumbnailElement, setImage, uploadEl, setUploadEl)
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (
-        <ImageDisplay uploadRef={uploadRef} 
-                        imgIcon={imgIcon}
-                        uploadInputRef={uploadInputRef}
-                        removeButtonRef={removeButtonRef}
-                        thumb={thumb}
-                        thumbnailElement={thumbnailElement}
-                        prompt={prompt}
-                        promptElement={promptElement}
-                        />
-      );
+        <div data-testid="image-container" className='image-container' >
+    
+            <label className='image-label'>IMAGE</label>
+    
+            <div ref={uploadRef} className={uploadEl} >
+                <div className='image-icon'>
+                    <img src={imgIcon} alt="imageIcon" className='camera' />
+                </div>
+                <span ref={promptElement} className={prompt} >Drop file here or click to upload</span>
+                <div ref={thumbnailElement} className={thumb} ></div>
+                <input ref={uploadInputRef} type="file" name='myFile' className='image-upload-input' accept="image/*" />
+            </div>
+    
+            <div>
+                <button ref={removeButtonRef} className='remove-button'>Remove</button>
+            </div>
+        </div>
+    );
 };
 
 export default ImageUpload;
