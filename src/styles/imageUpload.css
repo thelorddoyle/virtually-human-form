@@ -32,11 +32,16 @@
       padding-top: 5px;
   }
 
+  .hide {
+    display: none;
+  }
+
   .image-upload-input {
       display: none;
   }
 
   .image-upload-thumb {
+    display: none;
     width: 100px;
     height: 100px;
     border-radius: 50%;
@@ -45,6 +50,10 @@
     background-size: cover;
     background-position: center;
     position: relative;
+  }
+
+.show-thumb {
+    display: inline;
   }
 
   

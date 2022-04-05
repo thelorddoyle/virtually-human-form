@@ -1,4 +1,4 @@
-export const ImageDisplay = ({uploadRef, imgIcon, uploadInputRef, removeButtonRef}) => {
+export const ImageDisplay = ({uploadRef, imgIcon, uploadInputRef, removeButtonRef, thumbnailElement, thumb, promptElement}) => {
     return(
         <div data-testid="image-container" className='image-container' >
 
@@ -8,7 +8,8 @@ export const ImageDisplay = ({uploadRef, imgIcon, uploadInputRef, removeButtonRe
             <div className='image-icon'>
                 <img src={imgIcon} alt="imageIcon" className='camera' />
             </div>
-            <span className='image-upload-prompt'>Drop file here or click to upload</span>
+            <span ref={promptElement} className='image-upload-prompt'>Drop file here or click to upload</span>
+            <div ref={thumbnailElement} className={thumb} ></div>
             <input ref={uploadInputRef} type="file" name='myFile' className='image-upload-input' accept="image/*" />
         </div>
 
