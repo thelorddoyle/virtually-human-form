@@ -1,4 +1,7 @@
-import { monthList, yearList, getNumOfMonth, getMonthFromNum, chooseDayListArg, toggleButtonClass, changeButtonBorder } from '../../../helpers/datePickerHelpers'
+import { monthList, yearList, getNumOfMonth, getMonthFromNum } from '../../../helpers/datePicker/datePickerHelpers'
+import { chooseDayList } from '../../../helpers/datePicker/chooseDayList'
+import { toggleButtonClass } from '../../../helpers/datePicker/toggleButtonClass'
+import { changeButtonBorder } from '../../../helpers/datePicker/changeButtonBorder'
 
 import { MonthButton } from './datePickerButtons/MonthButton'
 import { DayButton } from './datePickerButtons/DayButton'
@@ -17,7 +20,7 @@ export const DatePicker = ({values, convertDate}) => {
     const [dayList, setDayList] = useState([]);
 
     useEffect(() => {
-        chooseDayListArg(selectedMonth, selectedYear, setDayList);
+        chooseDayList(selectedMonth, selectedYear, setDayList);
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [selectedMonth]);
 
@@ -33,7 +36,7 @@ export const DatePicker = ({values, convertDate}) => {
             <div key={month} className='dropdown-item' onClick={(e) => {
                 setSelectedMonth(month);
                 setActiveMonth(false);
-                chooseDayListArg(month, selectedYear, setDayList);
+                chooseDayList(month, selectedYear, setDayList);
                 changeButtonBorder('monthButton');
                 toggleButtonClass('monthButton');
                 convertDate(Number(selectedDay), Number(getNumOfMonth[month]), Number(selectedYear));}}> 

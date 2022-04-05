@@ -66,33 +66,3 @@
         11: 'December'
     };
 
-    export const chooseDayListArg = (month, year, setDayList) => {
-        if (month === 'April' || month === 'June' || month === 'September' || month === 'November') {
-            setDayList(mediumMonth);
-        } else if (month === 'February') {
-            if (checkLeapYear(year)) {
-                setDayList(leapYear);
-            } else {
-                setDayList(shortestMonth);
-            }
-        } else if (month === 'January' || month === 'March' || month === 'May' || month === 'July' || month === 'August' || month === 'October' || month === 'December') {
-            setDayList(longestMonth);
-        };
-    };
-
-    export const toggleButtonClass = (divId) => {
-        if (document.getElementById(divId)) {
-            let myDiv = document.getElementById(divId).className;
-            if (myDiv === 'dropdown-btn') {
-                document.getElementById(divId).classList.add('dropdown-btn-active');
-                // document.getElementById(divId).classList.remove('dropdown-btn')
-            } else if (myDiv === 'dropdown-btn dropdown-btn-active') {
-                document.getElementById(divId).classList.remove('dropdown-btn-active');
-                document.getElementById(divId).style = '';
-            };
-        } ;
-    };
-
-    export const changeButtonBorder = (divId) => {
-        document.getElementById(divId).style.border = 'solid 1px green';
-    };

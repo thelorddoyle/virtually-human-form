@@ -20,19 +20,14 @@ const ImageUpload = ({image, setImage }) => {
     
     // listens for resetImage
     useEffect(() => {
-
         if (image === null) {
             resetImageHelper(thumbnailElement, setThumb, setPrompt)
         }
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [image]);
 
     useEffect(() => {
-
-        // check to see if the DOM elements have been rendered
         manageEventListeners(uploadRef, uploadInputRef, removeButtonRef, setThumb, setPrompt, thumbnailElement, setImage)
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
