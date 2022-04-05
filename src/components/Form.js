@@ -70,7 +70,7 @@ function Form () {
     // discard Changes handler
     const discardChanges = (ev) => {
         ev.preventDefault();
-        setImage('');
+        setImage(null);
         setValues(defaultValues);
     };
 
