@@ -1,10 +1,9 @@
-export const updateThumbnail = (thumbnailElement, file, setImage, setThumb, setPrompt, handlePrompt) => {
+export const updateThumbnail = (thumbnailElement, file, setImage, setThumb, setPrompt ) => {
     
-    // first time, remove the prompt
+    // first time, remove the prompt and show the thumbnail element
     if (thumbnailElement.current.classList.length === 1) {
         setThumb('image-upload-thumb show-thumb')
-        setPrompt(false)
-        handlePrompt()
+        setPrompt('hide')
     };
     
     // show actual thumbnail image
@@ -20,11 +19,10 @@ export const updateThumbnail = (thumbnailElement, file, setImage, setThumb, setP
     };
 };
 
-export const resetImageHelper = (uploadRef, thumbnailElement, setThumb, setPrompt, handlePrompt) => {
+export const resetImageHelper = ( thumbnailElement, setThumb, setPrompt ) => {
     if (thumbnailElement.current.className === 'image-upload-thumb show-thumb') {
         thumbnailElement.current.style.backgroundImage = ''
         setThumb('image-upload-thumb')
-        setPrompt(true)
-        handlePrompt()
+        setPrompt('image-upload-prompt')
     };
 };

@@ -15,21 +15,12 @@ const ImageUpload = ({image, setImage }) => {
     
     // state variables for toggling image and prompt
     const [thumb, setThumb] = useState('')
-    const [prompt, setPrompt] = useState(true)
-
-    // TODO: remove this handler and just have state being updated
-    const handlePrompt = () => {
-        if (prompt) {
-            promptElement.current.className = 'hide'
-        } else {
-            promptElement.current.className = 'image-upload-prompt'
-        }
-    }
+    const [prompt, setPrompt] = useState('')
     
     // listens for resetImage
     useEffect(() => {
         if (image === '') {
-            resetImageHelper(uploadRef, thumbnailElement, setThumb, setPrompt, handlePrompt)
+            resetImageHelper(uploadRef, thumbnailElement, setThumb, setPrompt)
         }
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [image]);
@@ -48,6 +39,7 @@ const ImageUpload = ({image, setImage }) => {
         let inputElement = uploadInputRef.current;
         let dragOptions = ['dragend', 'dragleave'];
         setThumb('image-upload-thumb')
+        setPrompt('image-upload-prompt')
 
         // make it so image can be clicked on to upload images too
         uploadElement.addEventListener('click', e => {
@@ -72,7 +64,7 @@ const ImageUpload = ({image, setImage }) => {
             e.preventDefault();
             if (e.dataTransfer.files.length) {
                 inputElement.files = e.dataTransfer.files;
-                updateThumbnail(thumbnailElement, e.dataTransfer.files[0], setImage, setThumb, setPrompt, handlePrompt);
+                updateThumbnail(thumbnailElement, e.dataTransfer.files[0], setImage, setThumb, setPrompt);
             }
             uploadElement.classList.remove('image-upload-over');
         });
@@ -80,7 +72,7 @@ const ImageUpload = ({image, setImage }) => {
         // send the correct DOM element, the file itself and the setImage function to updateThumbnail
         inputElement.addEventListener('change', e => {
             if (inputElement.files.length) {
-                updateThumbnail(thumbnailElement, inputElement.files[0], setImage, setThumb, setPrompt, handlePrompt);
+                updateThumbnail(thumbnailElement, inputElement.files[0], setImage, setThumb, setPrompt);
             }
         });
 
@@ -113,7 +105,7 @@ const ImageUpload = ({image, setImage }) => {
                 e.preventDefault();
                 if (e.dataTransfer.files.length) {
                     inputElement.files = e.dataTransfer.files;
-                    updateThumbnail(thumbnailElement, e.dataTransfer.files[0], setImage, setThumb, setPrompt, handlePrompt);
+                    updateThumbnail(thumbnailElement, e.dataTransfer.files[0], setImage, setThumb, setPrompt );
                 }
                 uploadElement.classList.remove('image-upload-over');
             });
@@ -121,7 +113,7 @@ const ImageUpload = ({image, setImage }) => {
             // send the correct DOM element, the file itself and the setImage function to updateThumbnail
             inputElement.removeEventListener('change', e => {
                 if (inputElement.files.length) {
-                    updateThumbnail(thumbnailElement, inputElement.files[0], setImage, setThumb, setPrompt, handlePrompt);
+                    updateThumbnail(thumbnailElement, inputElement.files[0], setImage, setThumb, setPrompt );
                 }
             });
 
@@ -141,6 +133,7 @@ const ImageUpload = ({image, setImage }) => {
                         removeButtonRef={removeButtonRef}
                         thumb={thumb}
                         thumbnailElement={thumbnailElement}
+                        prompt={prompt}
                         promptElement={promptElement}
                         />
       );
