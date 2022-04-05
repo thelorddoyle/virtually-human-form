@@ -19,7 +19,7 @@ function Form () {
         email: 'dlorddoyle@gmail.com',
         phone: '+61 451 087 593',
         dob: new Date(1988, 9, 14),
-        bio: 'lorem ipsum lorem ipsum',
+        bio: 'I cannot wait to work for Virtually Human in the best and most innovative team in Australia!',
         img: null
     };
 
