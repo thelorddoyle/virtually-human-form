@@ -12,6 +12,7 @@
 
 <p align="center">
   <a href="#conditions">Conditions</a> •
+  <a href="#userstory">User Story</a> •
   <a href="#installation">Installation</a> •
   <a href="#testing">Testing</a> •
   <a href="#build">Build</a>
@@ -48,6 +49,20 @@ Hopefully this helps you manually test the application if you'd like.
 
 ![App](src/images/example-of-app.png)
 
+# `User Story`
+
+| Condition | Status | Notes
+| --- | ----------- | --- |
+| The form is pre-populated with my details | true | n/a |
+| The form contains all required editable fields | true | n/a |
+| Date of birth: must be a datepicker | true | With the styling required, I built my own datepicker |
+| Validations for fields must be met | true | They are also tested for, including valid email and phone no. |
+| If user tabs away from an invalid field the field is highlighted with red and error message appears below | true | n/a |
+| Once a user corrects the error and tabs/clicks away the error is removed | true | n/a |
+| User can click on blank avatar, browse folders and upload an image which appears in the circle | true | n/a |
+| Image upload: bonus points | true | You can drag and drop an image |
+| If user clicks 'Remove' the image will reset to the default | true | n/a |
+| If user clicks 'Save changes' a toast notification will let them know the submit was successful | true | n/a |
 # `Installation`
 
 I didn't know how deep you wanted me to go on this, so I have provided some basic instructions for someone who may not be familiar with GitHub.
