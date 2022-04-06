@@ -1,9 +1,27 @@
-export const LastName = ({values, onChange, sendValidation}) => {
+export const LastName = ({values, onChange, sendValidation, validationErrors}) => {
     
     return (
         <label htmlFor="lastName">LAST NAME*
-            <input aria-label="lastNameInput" value={values.lastName} onChange={onChange} name='lastName' type="text" onBlur={sendValidation} />
-            <p className="error"></p>
+
+            <input 
+                aria-label="lastNameInput" 
+                type="text" 
+                name='lastName' 
+                value={values.lastName} 
+                onChange={onChange} 
+                onBlur={sendValidation} 
+                className="valid-input" 
+            />
+
+            <p 
+                aria-label="lastNameErrorMessage" 
+                data-testid="lastNameErrorMessage" 
+                className="error">
+                
+                {validationErrors.lastName}
+
+            </p>
+
         </label>
     );
 };

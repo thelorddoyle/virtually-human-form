@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { DatePicker } from "./formComponents/datePickerComponents/DatePicker"
-import { Validate } from '../helpers/validators'
+import { Validate, defaultErrors } from '../helpers/validators'
 import { SuccessBanner } from './formComponents/SuccessBanner'
 import { FirstName } from './formComponents/FirstName'
 import { LastName } from './formComponents/LastName'
@@ -23,21 +23,12 @@ function Form () {
         img: null
     };
 
-    const errorDefaults = {
-        firstName: null,
-        lastName: null,
-        email: null,
-        phone: null,
-        dob: null,
-        bio: null,
-    }
-
     // state variables
     const [values, setValues] = useState({...defaultValues});
     const [isValid, setIsValid] = useState(true);
     const [isSuccess, setIsSuccess] = useState(false);
     const [image, setImage] = useState('');
-    const [validationErrors, setValidationErrors] = useState({...errorDefaults})
+    const [validationErrors, setValidationErrors] = useState({...defaultErrors})
 
     // this useEffect listens for a change in the image from the imageUpload and gives it to our values state
     useEffect(() => {
@@ -62,7 +53,7 @@ function Form () {
     
     // created this so I could take the ev data from the form field and send it along with setIsValid so that I know if both the field & the form are valid or invalid
     const sendValidation = (ev) => {
-        Validate(ev, setIsValid, setIsSuccess, setValidationErrors);
+        Validate(ev, setIsValid, setIsSuccess, validationErrors, setValidationErrors);
     };
     
     // handle submit which will only submit if form is valid
@@ -96,11 +87,11 @@ function Form () {
                     <form onSubmit={onSubmit}>
 
                         <FirstName values={values} onChange={onChange} sendValidation={sendValidation} validationErrors={validationErrors} />
-                        <LastName values={values} onChange={onChange} sendValidation={sendValidation} />
-                        <Email values={values} onChange={onChange} sendValidation={sendValidation} />
-                        <Phone values={values} onChange={onChange} sendValidation={sendValidation} />
+                        <LastName values={values} onChange={onChange} sendValidation={sendValidation} validationErrors={validationErrors} />
+                        <Email values={values} onChange={onChange} sendValidation={sendValidation} validationErrors={validationErrors} />
+                        <Phone values={values} onChange={onChange} sendValidation={sendValidation} validationErrors={validationErrors} />
                         <DatePicker values={values} convertDate={convertDate} />
-                        <Bio values={values} onChange={onChange} sendValidation={sendValidation} />
+                        <Bio values={values} onChange={onChange} sendValidation={sendValidation} validationErrors={validationErrors} />
                         <Buttons discardChanges={discardChanges} />
 
                     </form>
