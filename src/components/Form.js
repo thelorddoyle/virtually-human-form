@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react"
 import { DatePicker } from "./formComponents/DatePicker/DatePicker"
 import { Validate, defaultErrors } from '../helpers/validators'
-import { SuccessBanner } from './formComponents/SuccessBanner'
+import { SuccessBanner } from './formComponents/SuccessBanner/SuccessBanner'
 import { FirstName } from './formComponents/FirstName/FirstName'
 import { LastName } from './formComponents/LastName/LastName'
 import { Email } from './formComponents/Email/Email'
 import { Phone } from './formComponents/Phone/Phone'
 import { Bio } from './formComponents/Bio/Bio'
-import { Buttons } from './formComponents/Buttons'
+import { Buttons } from './formComponents/Buttons/Buttons'
 import ImageUpload from './formComponents/ImageUpload/ImageUpload'
 
 function Form () {
