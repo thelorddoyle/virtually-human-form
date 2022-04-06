@@ -1,17 +1,18 @@
 /* eslint-disable testing-library/no-debugging-utils */
 import { render, screen } from "@testing-library/react";
 import { noErrorsAllowed } from '../test-utils';
-import userEvent from '@testing-library/user-event'
 
 import Form from "./Form";
+
+// allows me to call this function and render form in all it blocks
+const setupTest = () => {render(<Form />);};
 
 noErrorsAllowed();
 
 describe('My form input rendering tests', () => {
 
     it('will render the input fields with the correct default values', () => {
-        
-        render(<Form />)
+        setupTest()
 
         const firstNameInput = screen.getByRole('textbox', {  name: /firstnameinput/i});
         expect(firstNameInput).toHaveDisplayValue('Daniel');
@@ -40,17 +41,13 @@ describe('My form input rendering tests', () => {
         const imageUploadPrompt = screen.getByTestId('promptMessage');
         expect(imageUploadPrompt).toHaveTextContent(/drop file here or click to upload/i);
         expect(imageUploadPrompt).toBeInTheDocument();
-
-        // screen.debug();
-
     })
 })
 
 describe('My button rendering tests', () => {
 
     it('will render the buttons with the correct default values', () => {
-
-        render(<Form />)
+        setupTest()
 
         const removeButton = screen.getByRole('button', { name: /remove/i })
         expect(removeButton).toBeInTheDocument()
@@ -60,14 +57,5 @@ describe('My button rendering tests', () => {
 
         const discardButton = screen.getByRole('button', { name: /discard/i })
         expect(discardButton).toBeInTheDocument()
-
     })
-
 })
-
-// test that if I write incorrect values (numbers, with spaces or empty field) that it will:
-    // highlight in red and change class to error-field
-    // the error field p will exist
-    // the error field p will have the correct message in it per validation
-// test that if I click submit that it console logs that value out (?? is this possible)
-// test that if I write something in to the text box for first name and press discard changes the text changes back to the original default value
