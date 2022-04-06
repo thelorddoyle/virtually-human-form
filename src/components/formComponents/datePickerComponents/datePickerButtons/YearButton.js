@@ -17,9 +17,9 @@ export const YearButton = ({setActiveYear, isActiveYear, toggleButtonClass, sele
     }, [isActiveYear])
 
     return (
-        <div data-testid="yearButton" className='dropdown'>
+        <div className='dropdown'>
 
-            <div tabIndex="0" id='yearButton' className={borderClass} onClick={e => {
+            <div data-testid="yearButton" aria-label="chooseYearButton" tabIndex="0" id='yearButton' className={borderClass} onClick={e => {
                 setActiveYear(!isActiveYear)
                 toggleButtonClass('yearButton')}}>
                 {selectedYear}

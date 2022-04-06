@@ -17,9 +17,9 @@ export const DayButton = ({setActiveDay, isActiveDay, toggleButtonClass, selecte
     }, [isActiveDay])
 
     return (
-        <div data-testid="dayButton" className='dropdown'>
+        <div className='dropdown'>
 
-            <div tabIndex="0" id='dayButton' className={borderClass} onClick={e => {
+            <div data-testid="dayButton" aria-label="chooseDayButton" tabIndex="0" id='dayButton' className={borderClass} onClick={e => {
                 setActiveDay(!isActiveDay)
                 toggleButtonClass('dayButton')}}>
                 {selectedDay}

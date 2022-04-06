@@ -1,9 +1,9 @@
-export const FirstName = ({values, onChange, sendValidation}) => {
+export const FirstName = ({values, onChange, sendValidation, validationErrors}) => {
     
     return(
         <label htmlFor="firstName">FIRST NAME*
-            <input type="text" name='firstName' value={values.firstName} onChange={onChange} onBlur={sendValidation} />
-            <p className="error"></p>
+            <input aria-label="firstNameInput" type="text" name='firstName' value={values.firstName} onChange={onChange} onBlur={sendValidation} />
+            <p aria-label="firstNameErrorMessage" data-testid="firstNameErrorMessage" className="error" >{validationErrors.firstName}</p>
         </label>
     );
 };

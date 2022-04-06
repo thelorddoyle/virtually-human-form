@@ -1,13 +1,13 @@
 /* eslint-disable testing-library/no-debugging-utils */
 import { render, screen, within } from '@testing-library/react';
+import { noErrorsAllowed } from './test-utils';
 
 import App from './App';
 
-// although I understand it is not best practice to test assertions like this, I fixed my testing suite with regards to React 18 using this page and started to learn how to test
+noErrorsAllowed()
 
-test('App and form will render along with all internal components', () => {
-
-    render(<App />);
+test('the App component and all of the components within the app render with no console errors',  () => {
+    render(<App />)
 
     const appContainer = screen.getByTestId('app-container');
     expect(appContainer).toBeInTheDocument();
@@ -58,4 +58,4 @@ test('App and form will render along with all internal components', () => {
 
     const discardButton = screen.getByRole('button', { name: /discard/i });
     expect(discardButton).toBeInTheDocument();
-});
+})

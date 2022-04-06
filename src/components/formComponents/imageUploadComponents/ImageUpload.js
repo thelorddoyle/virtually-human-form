@@ -40,7 +40,7 @@ const ImageUpload = ({image, setImage }) => {
                 <div className='image-icon'>
                     <img src={imgIcon} alt="imageIcon" className='camera' />
                 </div>
-                <span ref={promptElement} className={prompt} >Drop file here or click to upload</span>
+                <span data-testid='promptMessage' aria-label='dropFileOrClickHerePrompt' ref={promptElement} className={prompt} >Drop file here or click to upload</span>
                 <div ref={thumbnailElement} className={thumb} ></div>
                 <input ref={uploadInputRef} type="file" name='myFile' className='image-upload-input' accept="image/*" />
             </div>

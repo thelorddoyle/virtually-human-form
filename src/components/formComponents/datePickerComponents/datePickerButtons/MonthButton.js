@@ -17,21 +17,21 @@ export const MonthButton = ({setActiveMonth, isActiveMonth, toggleButtonClass, s
     }, [isActiveMonth])
 
     return (
-        <div data-testid="monthButton" className='dropdown'>
+        <div className='dropdown'>
 
-            <div tabIndex="0" id='monthButton' className={borderClass} onClick={e => {
-                        setActiveMonth(!isActiveMonth)
-                        toggleButtonClass('monthButton')}}>
-                    {selectedMonth}
+            <div data-testid="monthButton" aria-label="chooseMonthButton" tabIndex="0" id='monthButton' className={borderClass} onClick={e => {
+                setActiveMonth(!isActiveMonth)
+                toggleButtonClass('monthButton')}}>
+                {selectedMonth}
             </div>
 
-                <span className='svg-arrow'></span>
+            <span className='svg-arrow'></span>
 
-                {isActiveMonth && (
-                <div id="dropdown-content" className="dropdown-content">
-                    {monthListOptions}
-                </div>
-                )}
+            {isActiveMonth && (
+            <div id="dropdown-content" className="dropdown-content">
+                {monthListOptions}
+            </div>
+            )}
         </div>
     );
 };

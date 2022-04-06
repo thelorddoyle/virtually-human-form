@@ -23,11 +23,22 @@ function Form () {
         img: null
     };
 
+    const errorDefaults = {
+        firstName: null,
+        lastName: 'Lord-Doyle',
+        email: 'dlorddoyle@gmail.com',
+        phone: '+61 451 087 593',
+        dob: new Date(1988, 9, 14),
+        bio: 'I cannot wait to work for Virtually Human in the best and most innovative team in Australia!',
+        img: null
+    }
+
     // state variables
     const [values, setValues] = useState({...defaultValues});
     const [isValid, setIsValid] = useState(true);
     const [isSuccess, setIsSuccess] = useState(false);
     const [image, setImage] = useState('');
+    const [validationErrors, setValidationErrors] = useState({...errorDefaults})
 
     // this useEffect listens for a change in the image from the imageUpload and gives it to our values state
     useEffect(() => {
@@ -85,7 +96,7 @@ function Form () {
                     <h3>Settings</h3>
                     <form onSubmit={onSubmit}>
 
-                        <FirstName values={values} onChange={onChange} sendValidation={sendValidation} />
+                        <FirstName values={values} onChange={onChange} sendValidation={sendValidation} validationErrors={validationErrors} />
                         <LastName values={values} onChange={onChange} sendValidation={sendValidation} />
                         <Email values={values} onChange={onChange} sendValidation={sendValidation} />
                         <Phone values={values} onChange={onChange} sendValidation={sendValidation} />
