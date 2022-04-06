@@ -1,0 +1,86 @@
+.dropdown {
+    margin: 0;
+    padding: 0;
+    margin-right: 10px;
+    position: relative;
+    user-select: none;
+}
+
+.dropdown .dropdown-btn {
+    text-transform: none;
+    max-width: 160px;
+    padding: 10px 16px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    height: 43.5px;
+    line-height: 21.5px;
+
+    background: rgba(240, 248, 255, 0.04) url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 512' width='28' height='20'><g><path d='M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z' fill='rgba(240, 248, 255, 0.64)' /></g></svg>") no-repeat;
+    background-position: right 5px top 50%;
+    
+    box-sizing: border-box;
+    border-radius: 4px;
+    
+    font-weight: 500;
+    font-size: 16px;
+    color: rgba(240, 248, 255, 0.64);
+    border: 1px solid rgba(240, 248, 255, 0.32)
+}
+
+.dropdown .dropdown-btn:hover {
+    border: 1px white solid;
+}
+
+.dropdown .dropdown-btn-active {
+    background: rgba(240, 248, 255, 0.04) url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 512' width='28' height='20'><g><path d='M288.662 352H31.338c-17.818 0-26.741-21.543-14.142-34.142l128.662-128.662c7.81-7.81 20.474-7.81 28.284 0l128.662 128.662c12.6 12.599 3.676 34.142-14.142 34.142z' fill='rgba(240, 248, 255, 0.64)' /></g></svg>") no-repeat;
+    background-position: right 5px top 50%;
+    border: 1px #27B18A solid !important
+}
+
+
+.dropdown .dropdown-content {
+    position: absolute;
+    width: 160px;
+    top: 90%;
+    background: #3A3F46;
+    font-weight: 500;
+    color: #F0F8FF;
+    font-size: 16px;
+    text-transform: none;
+    height: 220px;
+    overflow: auto;
+    border-radius: 5px;
+}
+
+.dropdown .dropdown-content .dropdown-item {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-left: 15px;
+    text-align: left;
+    cursor: pointer;
+    transition:  all 0.2s;
+
+}
+
+.dropdown .dropdown-content .dropdown-item:hover {
+    background: #A0A3A5;
+}
+
+
+.dropdown-content::-webkit-scrollbar {
+    width: 5px;
+    border-radius: 10px !important;
+    scroll-behavior: smooth !important;
+
+}
+ 
+.dropdown-content::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+
+}
+ 
+.dropdown-content::-webkit-scrollbar-thumb {
+  background-color: rgba(240,248,255, 0.12);
+  border-radius: 25% !important;
+}

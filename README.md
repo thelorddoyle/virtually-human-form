@@ -43,7 +43,7 @@ img: null
 lastName: "Lord-Doyle"
 phone: "+61 451 087 593"
 ```
-Hopefully this helps you manually test the application if you'd like.
+Hopefully this helps you manually test the application if you'd like. *Note* This will not show in the testing environment as I applied an 'if' function that only runs the console.log if not a 'test' in a Node environment.
 
 ## `Screenshot`
 
