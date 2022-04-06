@@ -3,6 +3,7 @@ import { noErrorsAllowed } from '../../../test-utils';
 import userEvent from '@testing-library/user-event'
 
 import Form from "../../Form";
+import { useReducer } from "react";
 
 // allows me to call this function and render form in all it blocks
 const setupTest = () => {render(<Form />);};
@@ -34,25 +35,4 @@ describe('The success banner', () => {
         expect(successBanner).toBeInTheDocument()
         expect(successBanner).toHaveClass('success-banner-hidden')
     })
-
-    // it('will not appear if someone submits but the form is invalid', async () => {
-    //     setupTest()
-    //     const user = userEvent.setup()
-
-    //     const successBanner = screen.getByText(/changes have been saved successfully/i)
-    //     const saveButton = screen.getByText(/save changes/i)
-
-    //     const firstNameInput = screen.getByRole('textbox', {  name: /firstnameinput/i});
-    //     const anywhereElseOnScreen = screen.getByRole('textbox', {  name: /phoneinput/i});
-    //     const firstNameInputErrorMessage = screen.getByTestId('firstNameErrorMessage')
-
-    //     await user.clear(firstNameInput)
-    //     await user.click(anywhereElseOnScreen)
-    //     expect(firstNameInput).toBeEmptyDOMElement();
-    //     expect(firstNameInputErrorMessage).toHaveTextContent('This field is required')
-
-    //     await user.click(saveButton)
-    //     expect(successBanner).toBeInTheDocument()
-    //     expect(successBanner).toHaveClass('success-banner-hidden')
-    // })
 });
