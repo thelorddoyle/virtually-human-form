@@ -25,12 +25,11 @@ function Form () {
 
     const errorDefaults = {
         firstName: null,
-        lastName: 'Lord-Doyle',
-        email: 'dlorddoyle@gmail.com',
-        phone: '+61 451 087 593',
-        dob: new Date(1988, 9, 14),
-        bio: 'I cannot wait to work for Virtually Human in the best and most innovative team in Australia!',
-        img: null
+        lastName: null,
+        email: null,
+        phone: null,
+        dob: null,
+        bio: null,
     }
 
     // state variables
@@ -63,7 +62,7 @@ function Form () {
     
     // created this so I could take the ev data from the form field and send it along with setIsValid so that I know if both the field & the form are valid or invalid
     const sendValidation = (ev) => {
-        Validate(ev, setIsValid, setIsSuccess);
+        Validate(ev, setIsValid, setIsSuccess, setValidationErrors);
     };
     
     // handle submit which will only submit if form is valid
