@@ -34,15 +34,15 @@ const ImageUpload = ({image, setImage }) => {
     return (
         <div data-testid="image-container" className='image-container' >
     
-            <label className='image-label'>IMAGE</label>
+            <label htmlFor='file-uploader' className='image-label'>IMAGE</label>
     
             <div ref={uploadRef} className={uploadEl} >
                 <div className='image-icon'>
                     <img src={imgIcon} alt="imageIcon" className='camera' />
                 </div>
                 <span data-testid='promptMessage' aria-label='dropFileOrClickHerePrompt' ref={promptElement} className={prompt} >Drop file here or click to upload</span>
-                <div ref={thumbnailElement} className={thumb} ></div>
-                <input ref={uploadInputRef} type="file" name='myFile' className='image-upload-input' accept="image/*" />
+                <div data-testid="imageThumbnail" ref={thumbnailElement} className={thumb} ></div>
+                <input id='file-uploader' data-testid="imageUploadInput" ref={uploadInputRef} type="file" name='myFile' className='image-upload-input' accept="image/*" />
             </div>
     
             <div>

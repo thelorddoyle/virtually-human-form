@@ -6,7 +6,7 @@ import App from './App';
 
 noErrorsAllowed()
 
-test('the App component and all of the components within the app render with no console errors',  () => {
+test('the App component and all of the components within the app render with no errors',  () => {
     render(<App />)
 
     const appContainer = screen.getByTestId('app-container');

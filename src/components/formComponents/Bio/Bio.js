@@ -14,9 +14,11 @@ export const Bio = ({values, onChange, sendValidation, validationErrors}) => {
             />
 
             <p 
-                aria-label="firstNameErrorMessage" 
-                data-testid="firstNameErrorMessage" 
-                className="error">
+                aria-label="bioErrorMessage" 
+                data-testid="bioErrorMessage" 
+                className="error"
+                type="text"
+            >
 
                 {validationErrors.bio}
 
