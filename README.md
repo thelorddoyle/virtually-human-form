@@ -34,7 +34,7 @@ You should include any unit tests that you deem approproate / necessary | true |
 
 Whilst there is no true API, and the data doesn't persist, I enabled it so that the Save Changes button would print out a console log like this:
 
-```
+```js
 bio: "I cannot wait to work for Virtually Human in the best and most innovative team in Australia!"
 dob: Date Fri Oct 14 1988 00:00:00 GMT+1000 (Australian Eastern Standard Time)
 email: "dlorddoyle@gmail.com"
