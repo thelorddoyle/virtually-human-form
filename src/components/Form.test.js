@@ -1,10 +1,8 @@
-/* eslint-disable testing-library/no-debugging-utils */
 import { render, screen } from "@testing-library/react";
 import { noErrorsAllowed } from '../test-utils';
 
 import Form from "./Form";
 
-// allows me to call this function and render form in all it blocks
 const setupTest = () => {render(<Form />);};
 
 noErrorsAllowed();
@@ -12,7 +10,7 @@ noErrorsAllowed();
 describe('My form input rendering tests', () => {
 
     it('will render the input fields with the correct default values', () => {
-        setupTest()
+        setupTest();
 
         const firstNameInput = screen.getByRole('textbox', {  name: /firstnameinput/i});
         expect(firstNameInput).toHaveDisplayValue('Daniel');
@@ -41,5 +39,5 @@ describe('My form input rendering tests', () => {
         const imageUploadPrompt = screen.getByTestId('promptMessage');
         expect(imageUploadPrompt).toHaveTextContent(/drop file here or click to upload/i);
         expect(imageUploadPrompt).toBeInTheDocument();
-    })
-})
+    });
+});

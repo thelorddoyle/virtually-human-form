@@ -1,13 +1,12 @@
-/* eslint-disable testing-library/no-debugging-utils */
 import { render, screen, within } from '@testing-library/react';
 import { noErrorsAllowed } from './test-utils';
 
 import App from './App';
 
-noErrorsAllowed()
+noErrorsAllowed();
 
 test('the App component and all of the components within the app render with no errors',  () => {
-    render(<App />)
+    render(<App />);
 
     const appContainer = screen.getByTestId('app-container');
     expect(appContainer).toBeInTheDocument();
@@ -58,4 +57,4 @@ test('the App component and all of the components within the app render with no 
 
     const discardButton = screen.getByRole('button', { name: /discard/i });
     expect(discardButton).toBeInTheDocument();
-})
+});

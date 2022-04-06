@@ -61,7 +61,9 @@ function Form () {
         ev.preventDefault();
 
         if (isValid) {
-            console.log(values); 
+            if (process.env.NODE_ENV !== 'test') {
+                console.log(values); 
+            }
             setIsSuccess(true);
         } else {
             setIsSuccess(false);

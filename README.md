@@ -76,25 +76,20 @@ $ brew install git
 ```
 $ git --version git version 2.9.2
 ```
-4. Configure your Git username and email using the following commands, replacing my name with your own. These details will be associated with any commits that you create:
-``` 
-$ git config --global user.name "Daniel Lord-Doyle"
-$ git config --global user.email "dlorddoyle@gmail.com"
-```
-5. Navigate to a relevant folder that you would like to contain your version of the app and type
+4. Navigate to a relevant folder that you would like to contain your version of the app and type
 ``` 
 git clone https://github.com/thelorddoyle/virtually-human-form.git 
 ```
-6. (Optional) Alternatively you can [download the zip of the project here](https://github.com/thelorddoyle/virtually-human-form/archive/refs/heads/main.zip).
-7. You should now see the 'virtually-human-form' directory in your chosen folder. Type the following:
+5. (Optional) Alternatively you can [download the zip of the project here](https://github.com/thelorddoyle/virtually-human-form/archive/refs/heads/main.zip).
+6. You should now see the 'virtually-human-form' directory in your chosen folder. Type the following:
 ``` 
 cd virtually-human-form/
 ```
-8. You are now inside the project! We now need to install the dependencies by typing:
+7. You are now inside the project! We now need to install the dependencies by typing:
 ```
 npm install 
 ```
-9. Finally, let's get the app up and running. Type the following:
+8. Finally, let's get the app up and running. Type the following:
 ```
 npm start
 ```
@@ -113,7 +108,7 @@ npm test
 This launches the test runner in the interactive watch mode, where you can also choose from options as to which tests you would like to watch / run.
 
 If you would like to run a specific test, type:
-```
+```js
 npm test -- {insert test file name} (or at least enough so that it is unique)
 
 Example:
@@ -140,7 +135,7 @@ The tests check that every component renders, that it renders correctly and that
 
 ## `Example test`
 
-```
+```js
     it('will correctly render 29 days in February if it is a leap year', async () => {
         setupTest()
 
@@ -173,7 +168,7 @@ The tests check that every component renders, that it renders correctly and that
 
 To ensure that no console errors could possibly appear I built a test utility that ran in all of the test files to ensure that a test would be thrown if **any** console errors occured.
 
-```
+```js
 import sinon from 'sinon';
 
 export function noErrorsAllowed() {
