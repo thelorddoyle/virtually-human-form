@@ -33,7 +33,7 @@ You should include any unit tests that you deem approproate / necessary | true |
 
 Whilst there is no true API, and the data doesn't persist, I enabled it so that the Save Changes button would print out a console log like this:
 
-```json
+```
 bio: "I cannot wait to work for Virtually Human in the best and most innovative team in Australia!"
 dob: Date Fri Oct 14 1988 00:00:00 GMT+1000 (Australian Eastern Standard Time)
 email: "dlorddoyle@gmail.com"
@@ -54,15 +54,15 @@ I didn't know how deep you wanted me to go on this, so I have provided some basi
 
 1. Install [Homebrew](https://brew.sh/)
 2. Open your terminal and install Git using Homebrew:
-```json
+```
 $ brew install git
 ```
 3. Verify the installation was successful by typing which git --version:
-```json
+```
 $ git --version git version 2.9.2
 ```
 4. Configure your Git username and email using the following commands, replacing my name with your own. These details will be associated with any commits that you create:
-```json 
+``` 
 $ git config --global user.name "Daniel Lord-Doyle"
 $ git config --global user.email "dlorddoyle@gmail.com"
 ```
@@ -72,11 +72,11 @@ git clone https://github.com/thelorddoyle/virtually-human-form.git
 ```
 6. (Optional) Alternatively you can [download the zip of the project here](https://github.com/thelorddoyle/virtually-human-form/archive/refs/heads/main.zip).
 7. You should now see the 'virtually-human-form' directory in your chosen folder. Type the following:
-```json 
+``` 
 cd virtually-human-form/
 ```
 8. You are now inside the project! We now need to install the dependencies by typing:
-```json
+```
 npm install 
 ```
 9. Finally, let's get the app up and running. Type the following:
@@ -125,7 +125,7 @@ The tests check that every component renders, that it renders correctly and that
 
 ## `Example test`
 
-```json
+```
     it('will correctly render 29 days in February if it is a leap year', async () => {
         setupTest()
 
@@ -158,7 +158,7 @@ The tests check that every component renders, that it renders correctly and that
 
 To ensure that no console errors could possibly appear I built a test utility that ran in all of the test files to ensure that a test would be thrown if **any** console errors occured.
 
-```json
+```
 import sinon from 'sinon';
 
 export function noErrorsAllowed() {
@@ -177,7 +177,7 @@ export function noErrorsAllowed() {
 
 Once the app has been tested, in the terminal type:
 
-```json
+```
 npm run build
 ```
 
@@ -187,14 +187,14 @@ For the purpose of this exercise, I installed serve and hosted the app on my own
 
 To do this, type:
 
-```json
+```
 npm install -g serve
 serve -s build
 ```
 
 If you like, the port can be adjusted:
 
-```json
+```
 serve -s build -l 4000
 OR
 serve -h (for all of your options)
