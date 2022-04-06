@@ -3,12 +3,9 @@ import { noErrorsAllowed } from '../../../test-utils';
 import userEvent from '@testing-library/user-event'
 
 import Form from "../../Form";
-import { useReducer } from "react";
 
-// allows me to call this function and render form in all it blocks
 const setupTest = () => {render(<Form />);};
 
-// ensures that no console errors occur in any of my it blocks or throw error in test
 noErrorsAllowed();
 
 describe('The success banner', () => {

@@ -81,27 +81,25 @@ describe('The DOB datepicker input', () => {
 
         const user = userEvent.setup()
 
-        // choose February and choose year 1988
+        // choose February as a month
         const monthButton = screen.getByTestId('monthButton');
         await user.click(monthButton)
-        expect(monthButton).toHaveClass('dropdown-btn dropdown-btn-active')
-        const differentMonth = screen.getByText(/april/i)
+        const differentMonth = screen.getByText(/february/i)
         await user.click(differentMonth)
-        expect(monthButton).toHaveTextContent(/april/i);
+        expect(monthButton).toHaveTextContent(/february/i);
 
+        // choose 2020 as a year (which was a leap year)
         const yearButton = screen.getByTestId('yearButton');
         await user.click(yearButton)
-        expect(yearButton).toHaveClass('dropdown-btn dropdown-btn-active')
         const leapYear = screen.getByText(/2020/i)
         await user.click(leapYear)
         expect(yearButton).toHaveTextContent(/2020/i);
 
+        // try to get the 29th day in February which is only available on a leap year
         const dayButton = screen.getByTestId('dayButton');
         await user.click(dayButton)
-        expect(dayButton).toHaveClass('dropdown-btn dropdown-btn-active')
-
-        const differentDay = screen.getByText(/29/i)
-        await user.click(differentDay)
+        const theleapday = screen.getByText(/29/i)
+        await user.click(theleapday)
         expect(dayButton).toHaveTextContent(/29/i);
     })
 

@@ -1,70 +1,203 @@
-# Getting Started with Create React App
+<p align="center"><img src="https://static.wixstatic.com/media/179cfc_478b920decdf433596a6f4a969649933~mv2.gif" alt="vhs-logo" style="width:540px"/></p>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<p align="center">
+<img src="https://img.shields.io/badge/version-1.0-success" />
+<img src="https://img.shields.io/github/issues/thelorddoyle/virtually-human-form" />
+<img src="https://img.shields.io/github/languages/count/thelorddoyle/virtually-human-form"/>
+<img src="https://img.shields.io/github/languages/top/thelorddoyle/virtually-human-form"/>
+<img src="https://img.shields.io/github/commit-activity/m/thelorddoyle/virtually-human-form"/>
+</p>
 
-## Available Scripts
+<h1 align="center">Virtually Human - User Account Form</h1>
 
-In the project directory, you can run:
+<p align="center">
+  <a href="#conditions">Conditions</a> •
+  <a href="#installation">Installation</a> •
+  <a href="#testing">Testing</a> •
+  <a href="#build">Build</a>
+</p>
 
-### `npm start`
+# `Conditions`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+| Condition | Status | Notes
+| --- | ----------- | --- |
+| You must not use React.js and emotion for styling | true | Only pure CSS was used |
+| You must not use any other UI libraries | true | No libraries were used |
+| You must include a README.md file with instructions on how to install, build and run the app and how to run tests | true | This README.md includes all of that information |
+You should include any unit tests that you deem approproate / necessary | true | 11 test suites, 49 tests |
+| The solution interface should resemble the designs provided | true | As close as I could. Used Figma CSS for guidance |
+| There should be no console error messages | true | Built a test utility that was attached to all tests that would throw an error on the test if a console error occured to ensure this was true |
+| The codebase should use appropriate linting | true | Used ESLint |
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## `Other features`
 
-### `npm test`
+Whilst there is no true API, and the data doesn't persist, I enabled it so that the Save Changes button would print out a console log like this:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```json
+bio: "I cannot wait to work for Virtually Human in the best and most innovative team in Australia!"
+dob: Date Fri Oct 14 1988 00:00:00 GMT+1000 (Australian Eastern Standard Time)
+email: "dlorddoyle@gmail.com"
+firstName: "Daniel"
+img: null
+lastName: "Lord-Doyle"
+phone: "+61 451 087 593"
+```
+Hopefully this helps you manually test the application if you'd like.
 
-### `npm run build`
+## `Screenshot`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![App](src/images/example-of-app.png)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# `Installation`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+I didn't know how deep you wanted me to go on this, so I have provided some basic instructions for someone who may not be familiar with GitHub.
 
-### `npm run eject`
+1. Install [Homebrew](https://brew.sh/)
+2. Open your terminal and install Git using Homebrew:
+```json
+$ brew install git
+```
+3. Verify the installation was successful by typing which git --version:
+```json
+$ git --version git version 2.9.2
+```
+4. Configure your Git username and email using the following commands, replacing my name with your own. These details will be associated with any commits that you create:
+```json 
+$ git config --global user.name "Daniel Lord-Doyle"
+$ git config --global user.email "dlorddoyle@gmail.com"
+```
+5. Navigate to a relevant folder that you would like to contain your version of the app and type
+``` 
+git clone https://github.com/thelorddoyle/virtually-human-form.git 
+```
+6. (Optional) Alternatively you can [download the zip of the project here](https://github.com/thelorddoyle/virtually-human-form/archive/refs/heads/main.zip).
+7. You should now see the 'virtually-human-form' directory in your chosen folder. Type the following:
+```json 
+cd virtually-human-form/
+```
+8. You are now inside the project! We now need to install the dependencies by typing:
+```json
+npm install 
+```
+9. Finally, let's get the app up and running. Type the following:
+```
+npm start
+```
+**You have successfully installed the app! Simply wait for the app to start & open [http://localhost:3000](http://localhost:3000)**
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+# `Testing`
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+![Test Suite](src/images/test-suite.png)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+If you would like to run the entire suite of tests, open your terminal whilst in the app folder and type:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```
+npm test
+```
 
-## Learn More
+This launches the test runner in the interactive watch mode, where you can also choose from options as to which tests you would like to watch / run.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+If you would like to run a specific test, type:
+```
+npm test -- {insert test file name} (or at least enough so that it is unique)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Example:
 
-### Code Splitting
+npm test -- datePick
+(the above line will run the DatePicker.test.js file)
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## `Available test suites`
 
-### Analyzing the Bundle Size
+- src/components/formComponents/FirstName/FirstName.test.js
+- src/components/formComponents/LastName/LastName.test.js
+- src/components/formComponents/DatePicker/DatePicker.test.js
+- src/components/formComponents/Email/Email.test.js
+- src/components/formComponents/Phone/Phone.test.js
+- src/components/formComponents/Bio/Bio.test.js
+- src/components/formComponents/Buttons/Buttons.test.js
+- src/components/Form.test.js
+- src/components/formComponents/SuccessBanner/SuccessBanner.test.js
+## `What does the test suite test for?`
+Prior to this coding assessment, I have never used React testing so I really enjoyed learning about how the React Testing Library works and what the best practices are for RTL.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+The tests check that every component renders, that it renders correctly and that each component of the form that takes user interaction works as it should under a range of conditions.
 
-### Making a Progressive Web App
+## `Example test`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```json
+    it('will correctly render 29 days in February if it is a leap year', async () => {
+        setupTest()
 
-### Advanced Configuration
+        const user = userEvent.setup()
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+        // choose February as a month
+        const monthButton = screen.getByTestId('monthButton');
+        await user.click(monthButton)
+        const differentMonth = screen.getByText(/february/i)
+        await user.click(differentMonth)
+        expect(monthButton).toHaveTextContent(/february/i);
 
-### Deployment
+        // choose 2020 as a year (which was a leap year)
+        const yearButton = screen.getByTestId('yearButton');
+        await user.click(yearButton)
+        const leapYear = screen.getByText(/2020/i)
+        await user.click(leapYear)
+        expect(yearButton).toHaveTextContent(/2020/i);
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+        // try to get the 29th day in February which is only available on a leap year
+        const dayButton = screen.getByTestId('dayButton');
+        await user.click(dayButton)
+        const theleapday = screen.getByText(/29/i)
+        await user.click(theleapday)
+        expect(dayButton).toHaveTextContent(/29/i);
+    })
+```
 
-### `npm run build` fails to minify
+## `No console errors`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+To ensure that no console errors could possibly appear I built a test utility that ran in all of the test files to ensure that a test would be thrown if **any** console errors occured.
+
+```json
+import sinon from 'sinon';
+
+export function noErrorsAllowed() {
+    beforeEach(() => {
+      sinon.stub(console, 'error');
+    });
+  
+    afterEach(() => {
+      sinon.assert.notCalled(console.error);
+      console.error.restore();
+    });
+  }
+```
+
+# `Build`
+
+Once the app has been tested, in the terminal type:
+
+```json
+npm run build
+```
+
+The build is minified and the filenames include the hashes and is ready to be deployed.
+
+For the purpose of this exercise, I installed serve and hosted the app on my own localhost.
+
+To do this, type:
+
+```json
+npm install -g serve
+serve -s build
+```
+
+If you like, the port can be adjusted:
+
+```json
+serve -s build -l 4000
+OR
+serve -h (for all of your options)
+```
+
+Thank you for your consideration. I've had loads of fun doing this exercise and learnt loads!
