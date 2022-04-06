@@ -4,7 +4,6 @@ import { noErrorsAllowed } from '../../../test-utils';
 
 import Form from "./../../Form";
 
-// allows me to call this function and render form in all it blocks
 const setupTest = () => {render(<Form />);};
 
 noErrorsAllowed();
