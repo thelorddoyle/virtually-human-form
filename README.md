@@ -63,6 +63,9 @@ Hopefully this helps you manually test the application if you'd like. *Note* Thi
 | Image upload: bonus points | true | You can drag and drop an image |
 | If user clicks 'Remove' the image will reset to the default | true | n/a |
 | If user clicks 'Save changes' a toast notification will let them know the submit was successful | true | n/a |
+
+# `Future Improvements`
+- Convert from raw CSS to inline-styling and nested selectors through Emotion
 # `Installation`
 
 I didn't know how deep you wanted me to go on this, so I have provided some basic instructions for someone who may not be familiar with GitHub.
