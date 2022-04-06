@@ -61,7 +61,7 @@ function Form () {
         ev.preventDefault();
 
         if (isValid) {
-            // console.log(values); 
+            console.log(values); 
             setIsSuccess(true);
         } else {
             setIsSuccess(false);

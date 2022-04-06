@@ -314,6 +314,7 @@ textarea {
 }
 
 .success-banner-showing {
+    z-index: 100;
     opacity: 0; 
     display: inline;
     position: fixed;
