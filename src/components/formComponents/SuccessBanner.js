@@ -1,15 +1,19 @@
 import { useEffect, useState } from "react"
 
-export const SuccessBanner = ({isSuccess}) => {
+export const SuccessBanner = ({isSuccess, setIsSuccess}) => {
 
     const [bannerClassName, setIsBannerClassName] = useState('success-banner-hidden');
 
     useEffect(() => {
         if (isSuccess) {
             setIsBannerClassName('success-banner-showing');
+            setTimeout(() => {
+                setIsSuccess(false);
+           }, 5000);  // wait 5 seconds, then reset to false so that the banner can appear again after submit
         } else {
             setIsBannerClassName('success-banner-hidden');
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isSuccess]);
     
     return (

@@ -61,7 +61,7 @@ function Form () {
         ev.preventDefault();
 
         if (isValid) {
-            console.log(values);
+            // console.log(values); 
             setIsSuccess(true);
         } else {
             setIsSuccess(false);
@@ -78,7 +78,7 @@ function Form () {
     return(
         <>
 
-            <SuccessBanner isSuccess={isSuccess} />
+            <SuccessBanner isSuccess={isSuccess} setIsSuccess={setIsSuccess} />
 
             <div className="form-grid">
 
