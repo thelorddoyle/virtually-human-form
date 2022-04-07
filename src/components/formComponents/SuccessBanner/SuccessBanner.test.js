@@ -1,8 +1,8 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen } from "@testing-library/react";
 import { noErrorsAllowed } from '../../../test-utils';
 import userEvent from '@testing-library/user-event';
 
-import Form from '../../Form';
+import Form from "../../Form";
 
 const setupTest = () => {render(<Form />);};
 

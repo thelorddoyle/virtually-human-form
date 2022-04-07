@@ -53,6 +53,7 @@ export const manageEventListeners = (uploadRef, uploadInputRef, removeButtonRef,
         });
 
         // I have added this in preparation for the form to be part of a larger app, as we will want to remove EventListeners when we unmount the component
+        // TODO: Is there a cleaner way to do this? Maybe a window.removeEventListener(all???)
         return () => {
             uploadElement.removeEventListener('click', e => {
                 inputElement.click();

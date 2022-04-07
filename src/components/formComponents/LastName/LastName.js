@@ -6,7 +6,7 @@ export const LastName = ({values, onChange, sendValidation, validationErrors}) =
             <input 
                 aria-label="lastNameInput" 
                 type="text" 
-                name="lastName" 
+                name='lastName' 
                 value={values.lastName} 
                 onChange={onChange} 
                 onBlur={sendValidation} 

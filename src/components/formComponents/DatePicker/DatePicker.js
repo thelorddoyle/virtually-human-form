@@ -7,16 +7,16 @@ import { MonthButton } from './datePickerButtons/MonthButton'
 import { DayButton } from './datePickerButtons/DayButton'
 import { YearButton } from './datePickerButtons/YearButton'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from "react"
 
 export const DatePicker = ({values, convertDate}) => {
 
     const [isActiveMonth, setActiveMonth] = useState(false);
     const [isActiveDay, setActiveDay] = useState(false);
     const [isActiveYear, setActiveYear] = useState(false);
-    const [selectedMonth, setSelectedMonth] = useState('');
-    const [selectedDay, setSelectedDay] = useState('');
-    const [selectedYear, setSelectedYear] = useState('');
+    const [selectedMonth, setSelectedMonth] = useState("");
+    const [selectedDay, setSelectedDay] = useState("");
+    const [selectedYear, setSelectedYear] = useState("");
     const [dayList, setDayList] = useState([]);
 
     useEffect(() => {
@@ -96,7 +96,7 @@ export const DatePicker = ({values, convertDate}) => {
     return(
         <label htmlFor="selectYourDateOfBirth">SELECT YOUR DATE OF BIRTH* 
 
-        <div className="inline-grid">
+        <div className='inline-grid'>
 
         <MonthButton setActiveMonth={setActiveMonth} 
                         isActiveMonth={isActiveMonth} 

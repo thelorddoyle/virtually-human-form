@@ -1,3 +1,90 @@
+span {
+    font-size: 12px;
+}
+
+h3 {
+    position: static;
+    width: 106px;
+    height: 32px;
+    left: 0px;
+    top: 0px;
+    
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 32px;
+    
+    /* identical to box height, or 133% */
+    letter-spacing: 0.1px;
+    
+    color: #F0F8FF;
+
+    margin: 32px 0px;
+}
+
+label {
+    position: static;
+    height: 16px;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+
+    /* identical to box height, or 133% */
+    letter-spacing: 0.857143px;
+    text-transform: uppercase;
+
+    /* white/03.help */
+    color: rgba(240, 248, 255, 0.32);
+
+    margin: 8px 0px;
+}
+
+input, textarea, select  {
+    display: flex;
+    flex-direction: row;
+    padding: 10px 16px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+
+    width: 488px;
+
+    background: rgba(240, 248, 255, 0.04);
+    border: 1px solid rgba(240, 248, 255, 0.32);
+    
+    box-sizing: border-box;
+    border-radius: 4px;
+
+    font-weight: 500;
+    font-size: 16px;
+    color: rgba(240, 248, 255, 0.64);
+}
+
+input:hover, textarea:hover, select:hover {
+    border: 1px white solid;
+}
+
+input:focus-visible, textarea:focus-visible {
+    border: 1px #27B18A solid;
+    box-shadow: none;
+}
+
+select {
+    display: inline-block;
+    width: 160px;
+    margin-right: 5px; 
+}
+
+textarea {
+    height: 100px;
+}
+
 .form-grid {
     display: grid;
     width: 100%;
@@ -7,24 +94,182 @@
     padding-top: 100px;
     grid-template-columns: 1fr 1fr;
     justify-items: start;
-};
+}
 
 .form-grid .form-grid-left {
     padding-left: 30%;
-};
+}
 
 .form-grid .form-grid-right {
     padding-left: 200px;
-};
+}
+
+.button-container {
+    display: flex;
+    padding-top: 30px;
+    margin-right: 10px;
+    border-top: 2px solid rgba(151, 151, 151, 0.12);
+}
+
+.save-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    
+    position: static;
+    width: 180px;
+    margin-right: 15px;
+    
+    /* Gradients/Green Button */
+    background: linear-gradient(90deg, #27B18A 0%, #317D6C 100%);
+    box-shadow: 0px 0px 8px rgba(39, 177, 138, 0.32);
+    border-radius: 8px;
+}
+
+.save-button p {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+
+    /* identical to box height, or 150% */
+    text-align: center;
+    letter-spacing: 0.0666667px;
+
+    /* White/Primary */
+    color: #F0F8FF;
+
+    padding: 10px 0px;
+}
+
+.discard-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    
+    position: static;
+    width: 180px;
+    
+    /* Gradients/Green Button */
+    background: rgba(240, 248, 255, 0.32);
+    border-radius: 8px;
+}
+
+.discard-button p {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+
+    /* identical to box height, or 150% */
+    text-align: center;
+    letter-spacing: 0.0666667px;
+
+    /* White/Primary */
+    color: #F0F8FF;
+
+    padding: 10px 0px;
+}
+
+.dropdown {
+    margin: 0;
+    padding: 0;
+    margin-right: 10px;
+    position: relative;
+    user-select: none;
+}
+
+.dropdown .dropdown-btn {
+    text-transform: none;
+    max-width: 160px;
+    padding: 10px 16px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    height: 43.5px;
+    line-height: 21.5px;
+
+    background: rgba(240, 248, 255, 0.04) url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 512' width='28' height='20'><g><path d='M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z' fill='rgba(240, 248, 255, 0.64)' /></g></svg>") no-repeat;
+    background-position: right 5px top 50%;
+    
+    box-sizing: border-box;
+    border-radius: 4px;
+    
+    font-weight: 500;
+    font-size: 16px;
+    color: rgba(240, 248, 255, 0.64);
+    border: 1px solid rgba(240, 248, 255, 0.32)
+}
+
+.dropdown .dropdown-btn:hover {
+    border: 1px white solid;
+}
+
+.dropdown .dropdown-btn-active {
+    background: rgba(240, 248, 255, 0.04) url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 512' width='28' height='20'><g><path d='M288.662 352H31.338c-17.818 0-26.741-21.543-14.142-34.142l128.662-128.662c7.81-7.81 20.474-7.81 28.284 0l128.662 128.662c12.6 12.599 3.676 34.142-14.142 34.142z' fill='rgba(240, 248, 255, 0.64)' /></g></svg>") no-repeat;
+    background-position: right 5px top 50%;
+    border: 1px #27B18A solid !important
+}
+
+
+.dropdown .dropdown-content {
+    position: absolute;
+    width: 160px;
+    top: 90%;
+    background: #3A3F46;
+    font-weight: 500;
+    color: #F0F8FF;
+    font-size: 16px;
+    text-transform: none;
+    height: 220px;
+    overflow: auto;
+    border-radius: 5px;
+}
+
+.dropdown .dropdown-content .dropdown-item {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-left: 15px;
+    text-align: left;
+    cursor: pointer;
+    transition:  all 0.2s;
+
+}
+
+.dropdown .dropdown-content .dropdown-item:hover {
+    background: #A0A3A5;
+}
+
+
+.dropdown-content::-webkit-scrollbar {
+    width: 5px;
+    border-radius: 10px !important;
+    scroll-behavior: smooth !important;
+
+}
+ 
+.dropdown-content::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+
+}
+ 
+.dropdown-content::-webkit-scrollbar-thumb {
+  background-color: rgba(240,248,255, 0.12);
+  border-radius: 25% !important;
+}
 
 .inline-grid {
     display: grid;
     grid-template-columns: 167px 167px 167px;
-};
+}
 
 .error-field {
     border: 1px red solid;
-};
+}
 
 .error {
     color:#E32636;
@@ -35,4 +280,51 @@
     font-size: 12px;
     letter-spacing: 0.25px;
     line-height: 16px;
-};
+}
+
+@keyframes opacityFadeInAndOut {
+    0% {
+        opacity: 1;
+    }
+    25% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 1;
+    }
+    75% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+
+}
+
+.banners {
+    font-family: 'Montserrat';
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    color: white;
+    letter-spacing: 0.6px;
+}
+
+.success-banner-hidden {
+    display: none;
+}
+
+.success-banner-showing {
+    z-index: 100;
+    opacity: 0; 
+    display: inline;
+    position: fixed;
+    top: 0;
+    padding: 20px 0px;
+    width: 100%;
+    text-align: center;
+    background: linear-gradient(89.97deg, rgba(39, 177, 138, 0.38) 0%, rgba(39, 177, 138, 0.68) 114.46%), #2A2E35;
+    animation: opacityFadeInAndOut 5s normal forwards;
+    transition-timing-function: ease-in;
+    animation-delay: 1s;
+}

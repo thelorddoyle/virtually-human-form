@@ -11,7 +11,7 @@ export const MonthButton = ({setActiveMonth, isActiveMonth, toggleButtonClass, s
     useEffect(() => {
         if (isActiveMonth) {
             setBorderClass('dropdown-btn dropdown-btn-active')
-        } else { 
+        } else {
             setBorderClass('dropdown-btn')
         }
     }, [isActiveMonth])
