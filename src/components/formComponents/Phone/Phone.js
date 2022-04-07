@@ -6,7 +6,7 @@ export const Phone = ({values, onChange, sendValidation, validationErrors}) => {
             <input 
                 aria-label="phoneInput" 
                 onChange={onChange} 
-                name='phone' 
+                name="phone" 
                 type="text" 
                 value={values.phone} 
                 onBlur={sendValidation}

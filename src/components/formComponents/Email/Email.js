@@ -6,7 +6,7 @@ export const Email = ({values, onChange, sendValidation, validationErrors}) => {
             <input 
                 aria-label="emailInput" 
                 type="text" 
-                name='email'
+                name="email"
                 value={values.email} 
                 onChange={onChange} 
                 onBlur={sendValidation}
