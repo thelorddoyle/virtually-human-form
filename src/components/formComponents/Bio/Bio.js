@@ -20,7 +20,7 @@ export const Bio = ({values, onChange, sendValidation, validationErrors}) => {
                 type="text"
             >
 
-                {validationErrors.bio}
+                {validationErrors}
 
             </p>
             

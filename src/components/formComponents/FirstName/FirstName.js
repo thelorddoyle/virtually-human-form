@@ -18,7 +18,7 @@ export const FirstName = ({values, onChange, sendValidation, validationErrors}) 
                 data-testid="firstNameErrorMessage" 
                 className="error">
                 
-                {validationErrors.firstName}
+                {validationErrors}
                 
             </p>
 

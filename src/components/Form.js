@@ -88,12 +88,12 @@ function Form () {
                     <h3>Settings</h3>
                     <form onSubmit={onSubmit}>
 
-                        <FirstName values={values} onChange={onChange} sendValidation={sendValidation} validationErrors={validationErrors} />
-                        <LastName values={values} onChange={onChange} sendValidation={sendValidation} validationErrors={validationErrors} />
-                        <Email values={values} onChange={onChange} sendValidation={sendValidation} validationErrors={validationErrors} />
-                        <Phone values={values} onChange={onChange} sendValidation={sendValidation} validationErrors={validationErrors} />
+                        <FirstName values={values} onChange={onChange} sendValidation={sendValidation} validationErrors={validationErrors.firstName} />
+                        <LastName values={values} onChange={onChange} sendValidation={sendValidation} validationErrors={validationErrors.lastName} />
+                        <Email values={values} onChange={onChange} sendValidation={sendValidation} validationErrors={validationErrors.email} />
+                        <Phone values={values} onChange={onChange} sendValidation={sendValidation} validationErrors={validationErrors.phone} />
                         <DatePicker values={values} convertDate={convertDate} />
-                        <Bio values={values} onChange={onChange} sendValidation={sendValidation} validationErrors={validationErrors} />
+                        <Bio values={values} onChange={onChange} sendValidation={sendValidation} validationErrors={validationErrors.bio} />
                         <Buttons discardChanges={discardChanges} />
 
                     </form>

@@ -18,7 +18,7 @@ export const Phone = ({values, onChange, sendValidation, validationErrors}) => {
                 data-testid="phoneErrorMessage" 
                 className="error">
 
-                {validationErrors.phone}
+                {validationErrors}
 
             </p>
             
