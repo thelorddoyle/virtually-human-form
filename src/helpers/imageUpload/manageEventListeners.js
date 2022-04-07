@@ -1,4 +1,4 @@
-import { updateThumbnail } from "./updateThumbnail";
+import { updateThumbnail } from './updateThumbnail';
 
 export const manageEventListeners = (uploadRef, uploadInputRef, removeButtonRef, setThumb, setPrompt, thumbnailElement, setImage, uploadEl, setUploadEl) => {
 

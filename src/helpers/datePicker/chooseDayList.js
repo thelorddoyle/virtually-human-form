@@ -1,4 +1,4 @@
-import { mediumMonth, leapYear, shortestMonth, longestMonth, checkLeapYear } from "./datePickerHelpers";
+import { mediumMonth, leapYear, shortestMonth, longestMonth, checkLeapYear } from './datePickerHelpers';
 
 export const chooseDayList = (month, year, setDayList) => {
     if (month === 'April' || month === 'June' || month === 'September' || month === 'November') {

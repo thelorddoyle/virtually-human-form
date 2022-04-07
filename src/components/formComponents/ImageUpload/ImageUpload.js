@@ -32,21 +32,21 @@ const ImageUpload = ({image, setImage }) => {
     }, []);
 
     return (
-        <div data-testid="image-container" className='image-container' >
+        <div data-testid="image-container" className="image-container" >
     
-            <label htmlFor='file-uploader' className='image-label'>IMAGE</label>
+            <label htmlFor="file-uploader" className="image-label">IMAGE</label>
     
             <div ref={uploadRef} className={uploadEl} >
-                <div className='image-icon'>
-                    <img src={imgIcon} alt="imageIcon" className='camera' />
+                <div className="image-icon">
+                    <img src={imgIcon} alt="imageIcon" className="camera" />
                 </div>
-                <span data-testid='promptMessage' aria-label='dropFileOrClickHerePrompt' ref={promptElement} className={prompt} >Drop file here or click to upload</span>
+                <span data-testid="promptMessage" aria-label="dropFileOrClickHerePrompt" ref={promptElement} className={prompt} >Drop file here or click to upload</span>
                 <div data-testid="imageThumbnail" ref={thumbnailElement} className={thumb} ></div>
-                <input id='file-uploader' data-testid="imageUploadInput" ref={uploadInputRef} type="file" name='myFile' className='image-upload-input' accept="image/*" />
+                <input id="file-uploader" data-testid="imageUploadInput" ref={uploadInputRef} type="file" name="myFile" className="image-upload-input" accept="image/*" />
             </div>
     
             <div>
-                <button ref={removeButtonRef} className='remove-button'>Remove</button>
+                <button ref={removeButtonRef} className="remove-button">Remove</button>
             </div>
         </div>
     );

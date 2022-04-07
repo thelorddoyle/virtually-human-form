@@ -8,5 +8,5 @@ export const toggleButtonClass = (divId) => {
             document.getElementById(divId).classList.remove('dropdown-btn-active');
             document.getElementById(divId).style = '';
         };
-    } ;
+    };
 };

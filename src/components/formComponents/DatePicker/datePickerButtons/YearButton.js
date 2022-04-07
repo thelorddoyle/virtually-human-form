@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
 export const YearButton = ({setActiveYear, isActiveYear, toggleButtonClass, selectedYear, yearListOptions}) => {
 
@@ -17,15 +17,15 @@ export const YearButton = ({setActiveYear, isActiveYear, toggleButtonClass, sele
     }, [isActiveYear])
 
     return (
-        <div className='dropdown'>
+        <div className="dropdown">
 
-            <div data-testid="yearButton" aria-label="chooseYearButton" tabIndex="0" id='yearButton' className={borderClass} onClick={e => {
+            <div data-testid="yearButton" aria-label="chooseYearButton" tabIndex="0" id="yearButton" className={borderClass} onClick={e => {
                 setActiveYear(!isActiveYear)
-                toggleButtonClass('yearButton')}}>
+                toggleButtonClass("yearButton")}}>
                 {selectedYear}
             </div>
 
-            <span className='svg-arrow'></span>
+            <span className="svg-arrow"></span>
 
             {isActiveYear && (
             <div className="dropdown-content">

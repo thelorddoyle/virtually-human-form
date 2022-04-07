@@ -54,12 +54,12 @@ export const DatePicker = ({values, convertDate}) => {
     let monthListOptions = monthList.map((month) => {
         // each month is a string, not a number
         return (
-            <div key={month} className='dropdown-item' onClick={(e) => {
+            <div key={month} className="dropdown-item" onClick={(e) => {
                 setSelectedMonth(month);
                 setActiveMonth(false);
                 chooseDayList(month, selectedYear, setDayList);
-                changeButtonBorder('monthButton');
-                toggleButtonClass('monthButton');
+                changeButtonBorder("monthButton");
+                toggleButtonClass("monthButton");
                 convertDate(Number(selectedDay), Number(getNumOfMonth[month]), Number(selectedYear));}}> 
                 {month} 
             </div>
