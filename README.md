@@ -13,7 +13,7 @@
 <p align="center">
   <a href="#conditions">Conditions</a> •
   <a href="#userstory">User Story</a> •
-  <a href="#Future Improvements">Future Improvements</a> •
+  <a href="#Improvements">Improvements</a> •
   <a href="#installation">Installation</a> •
   <a href="#testing">Testing</a> •
   <a href="#build">Build</a>
@@ -50,7 +50,7 @@ Hopefully this helps you manually test the application if you'd like. *Note* Thi
 
 ![App](src/images/example-of-app.png)
 
-# `User Story`
+# `UserStory`
 
 | Condition | Status | Notes
 | --- | ----------- | --- |
@@ -65,7 +65,7 @@ Hopefully this helps you manually test the application if you'd like. *Note* Thi
 | If user clicks 'Remove' the image will reset to the default | true | n/a |
 | If user clicks 'Save changes' a toast notification will let them know the submit was successful | true | n/a |
 
-# `Future Improvements`
+# `Improvements`
 - Convert from raw CSS to inline-styling and nested selectors through Emotion
 - Mobile optimise styling
 - Make it so that date picker fields can be opened by clicking Enter when tabbed over and dropdown arrow keyed through
