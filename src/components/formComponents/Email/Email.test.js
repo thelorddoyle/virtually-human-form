@@ -10,13 +10,18 @@ noErrorsAllowed();
 
 describe('The email field input', () => {
 
+    let user, emailInput, discardButton, anywhereElseOnScreen, emailInputErrorMessage;
+
     beforeEach(() => {
         setupTest()
+        user = userEvent.setup();
+        emailInput = screen.getByRole('textbox', {  name: /emailinput/i});
+        discardButton = screen.getByRole('button', { name: /discard/i });
+        anywhereElseOnScreen = screen.getByRole('textbox', {  name: /phoneinput/i});
+        emailInputErrorMessage = screen.getByTestId('emailErrorMessage');
     });
 
     it('will save a new email in the field when a user types in the input', async () => {
-        const user = userEvent.setup();
-        const emailInput = screen.getByRole('textbox', {  name: /emailinput/i});
         const newEmail = 'test1@test.com';
                 
         expect(emailInput).toHaveDisplayValue('dlorddoyle@gmail.com');
@@ -26,10 +31,7 @@ describe('The email field input', () => {
     });
 
     it('will discard all of my changes if I press the discard button', async () => {
-        const user = userEvent.setup();
-        const emailInput = screen.getByRole('textbox', {  name: /emailinput/i});
-        const discardButton = screen.getByRole('button', { name: /discard/i });
-        const newEmail = 'test3@test.com';
+        const newEmail = 'test2@test.com';
         
         expect(emailInput).toHaveDisplayValue('dlorddoyle@gmail.com');
         await user.clear(emailInput);
@@ -41,11 +43,6 @@ describe('The email field input', () => {
     });
 
     it('will tell the user the field is required if the user does not put a value in the email text area', async () => {
-        const user = userEvent.setup();
-        const emailInput = screen.getByRole('textbox', {  name: /emailinput/i});
-        const anywhereElseOnScreen = screen.getByRole('textbox', {  name: /phoneinput/i});
-        const emailInputErrorMessage = screen.getByTestId('emailErrorMessage');
-
         await user.clear(emailInput);
         await user.click(anywhereElseOnScreen);
         expect(emailInput).toBeEmptyDOMElement();
@@ -53,10 +50,6 @@ describe('The email field input', () => {
     });
 
     it('will tell the user that they have typed in an invalid email if the name does not meet the email validator conditions', async () => {
-        const user = userEvent.setup();
-        const emailInput = screen.getByRole('textbox', {  name: /emailinput/i});
-        const anywhereElseOnScreen = screen.getByRole('textbox', {  name: /phoneinput/i});
-        const emailInputErrorMessage = screen.getByTestId('emailErrorMessage');
         const invalidEmail = 'iamnotavalidemail';
 
         await user.clear(emailInput);
@@ -66,10 +59,6 @@ describe('The email field input', () => {
     });
 
     it('will tell the user that they should check for spaces if there is a space char at the beginning or end of the email if they have rogue space characters there', async () => {
-        const user = userEvent.setup();
-        const emailInput = screen.getByRole('textbox', {  name: /emailinput/i});
-        const anywhereElseOnScreen = screen.getByRole('textbox', {  name: /phoneinput/i});
-        const emailInputErrorMessage = screen.getByTestId('emailErrorMessage');
         const invalidEmail = ' iamavalidemail@gmail.com ';
 
         await user.clear(emailInput);
@@ -79,10 +68,6 @@ describe('The email field input', () => {
     });
 
     it('will tell the user that they cannot only use space characters in an email if they have done that', async () => {
-        const user = userEvent.setup();
-        const emailInput = screen.getByRole('textbox', {  name: /emailinput/i});
-        const anywhereElseOnScreen = screen.getByRole('textbox', {  name: /phoneinput/i});
-        const emailInputErrorMessage = screen.getByTestId('emailErrorMessage');
         const invalidEmail = '   ';
 
         await user.clear(emailInput);
@@ -92,9 +77,6 @@ describe('The email field input', () => {
     });
 
     it('will highlight the field if there is an error', async () => {
-        const user = userEvent.setup();
-        const emailInput = screen.getByRole('textbox', {  name: /emailinput/i});
-        const anywhereElseOnScreen = screen.getByRole('textbox', {  name: /phoneinput/i});
 
         await user.clear(emailInput);
         await user.click(anywhereElseOnScreen);

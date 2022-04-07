@@ -12,13 +12,18 @@ noErrorsAllowed();
 
 describe('The last name field input', () => {
 
+    let user, lastNameInput, discardButton, anywhereElseOnScreen, lastNameInputErrorMessage;
+
     beforeEach(() => {
         setupTest();
+        user = userEvent.setup();   
+        lastNameInput = screen.getByRole('textbox', {  name: /lastnameinput/i});
+        discardButton = screen.getByRole('button', { name: /discard/i });
+        anywhereElseOnScreen = screen.getByRole('textbox', {  name: /phoneinput/i});
+        lastNameInputErrorMessage = screen.getByTestId('lastNameErrorMessage');
     });
 
     it('will save a new name in the field when a user types in the input', async () => {
-        const user = userEvent.setup();   
-        const lastNameInput = screen.getByRole('textbox', {  name: /lastnameinput/i});
         const newName = 'Test 1';
         
         expect(lastNameInput).toHaveDisplayValue('Lord-Doyle');
@@ -28,10 +33,7 @@ describe('The last name field input', () => {
     });
 
     it('will discard all of the users changes if the user presses the discard button', async () => {
-        const user = userEvent.setup();
-        const lastNameInput = screen.getByRole('textbox', {  name: /lastnameinput/i});
-        const discardButton = screen.getByRole('button', { name: /discard/i });
-        const newName = 'Test 3';
+        const newName = 'Test 2';
 
         await user.clear(lastNameInput);
         await user.type(lastNameInput, newName);
@@ -42,11 +44,6 @@ describe('The last name field input', () => {
     });
 
     it('will tell the user the field is required if the user does not put a value in the last name text area', async () => {        
-        const user = userEvent.setup();
-        const lastNameInput = screen.getByRole('textbox', {  name: /lastnameinput/i});
-        const anywhereElseOnScreen = screen.getByRole('textbox', {  name: /phoneinput/i});
-        const lastNameInputErrorMessage = screen.getByTestId('lastNameErrorMessage');
-
         await user.clear(lastNameInput);
         await user.click(anywhereElseOnScreen);
         expect(lastNameInput).toBeEmptyDOMElement();
@@ -54,10 +51,6 @@ describe('The last name field input', () => {
     });
 
     it('will tell the user that they have typed in an invalid name if the name does not meet the name validator conditions', async () => {
-        const user = userEvent.setup();
-        const lastNameInput = screen.getByRole('textbox', {  name: /lastnameinput/i});
-        const anywhereElseOnScreen = screen.getByRole('textbox', {  name: /phoneinput/i});
-        const lastNameInputErrorMessage = screen.getByTestId('lastNameErrorMessage');
         const invalidName = '123456';
 
         await user.clear(lastNameInput);
@@ -67,10 +60,6 @@ describe('The last name field input', () => {
     });
 
     it('will tell the user that they should check for spaces if there is a space char at the beginning or end of the name if they have rogue space characters there', async () => {
-        const user = userEvent.setup();
-        const lastNameInput = screen.getByRole('textbox', {  name: /lastnameinput/i});
-        const anywhereElseOnScreen = screen.getByRole('textbox', {  name: /phoneinput/i});
-        const lastNameInputErrorMessage = screen.getByTestId('lastNameErrorMessage');
         const invalidName = '  test for space  ';
 
         await user.clear(lastNameInput);
@@ -80,10 +69,6 @@ describe('The last name field input', () => {
     })
 
     it('will tell the user that they cannot only use space characters in a name if they have done that', async () => {
-        const user = userEvent.setup();
-        const lastNameInput = screen.getByRole('textbox', {  name: /lastnameinput/i});
-        const anywhereElseOnScreen = screen.getByRole('textbox', {  name: /phoneinput/i});
-        const lastNameInputErrorMessage = screen.getByTestId('lastNameErrorMessage');
         const invalidName = '   ';
 
         await user.clear(lastNameInput);
@@ -93,10 +78,6 @@ describe('The last name field input', () => {
     });
 
     it('will highlight the field if there is an error', async () => {        
-        const user = userEvent.setup();
-        const lastNameInput = screen.getByRole('textbox', {  name: /lastnameinput/i});
-        const anywhereElseOnScreen = screen.getByRole('textbox', {  name: /phoneinput/i});
-
         await user.clear(lastNameInput);
         await user.click(anywhereElseOnScreen);
         expect(lastNameInput).toHaveClass('error-field');

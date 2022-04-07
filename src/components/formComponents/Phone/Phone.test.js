@@ -12,14 +12,20 @@ noErrorsAllowed();
 
 describe('The phone field input', () => {
 
+    let user, phoneInput, discardButton, anywhereElseOnScreen, phoneInputErrorMessage;
+
     beforeEach(() => {
         setupTest();
+        user = userEvent.setup();
+        phoneInput = screen.getByRole('textbox', {name: /phoneinput/i});
+        discardButton = screen.getByRole('button', { name: /discard/i });
+        anywhereElseOnScreen = screen.getByRole('textbox', {name: /emailinput/i});
+        phoneInputErrorMessage = screen.getByTestId('phoneErrorMessage');
+
     });
 
     it('will save a new phone number in the field when a user types in the input', async () => {
-        const user = userEvent.setup();
-        const phoneInput = screen.getByRole('textbox', {name: /phoneinput/i});
-        const newphone = 'test1@test.com';
+        const newphone = '+61 451 123 123';
                 
         expect(phoneInput).toHaveDisplayValue('+61 451 087 593');
         await user.clear(phoneInput);
@@ -28,10 +34,7 @@ describe('The phone field input', () => {
     });
 
     it('will discard all of my changes if I press the discard button', async () => {
-        const user = userEvent.setup();
-        const phoneInput = screen.getByRole('textbox', {name: /phoneinput/i});
-        const discardButton = screen.getByRole('button', { name: /discard/i });
-        const newphone = 'test3@test.com';
+        const newphone = '+61 451 321 321';
         
         expect(phoneInput).toHaveDisplayValue('+61 451 087 593');
         await user.clear(phoneInput);
@@ -43,10 +46,6 @@ describe('The phone field input', () => {
     });
 
     it('will tell the user the field is required if the user does not put a value in the phone text area', async () => {        
-        const user = userEvent.setup();
-        const phoneInput = screen.getByRole('textbox', {name: /phoneinput/i});
-        const anywhereElseOnScreen = screen.getByRole('textbox', {name: /emailinput/i});
-        const phoneInputErrorMessage = screen.getByTestId('phoneErrorMessage');
 
         await user.clear(phoneInput);
         await user.click(anywhereElseOnScreen);
@@ -55,10 +54,6 @@ describe('The phone field input', () => {
     });
 
     it('will tell the user that they have typed in an invalid phone number if the name does not meet the phone number validator conditions', async () => {
-        const user = userEvent.setup();
-        const phoneInput = screen.getByRole('textbox', {name: /phoneinput/i});
-        const anywhereElseOnScreen = screen.getByRole('textbox', {name: /emailinput/i});
-        const phoneInputErrorMessage = screen.getByTestId('phoneErrorMessage');
         const invalidphone = 'iamnotavalidphone';
 
         await user.clear(phoneInput);
@@ -68,10 +63,6 @@ describe('The phone field input', () => {
     });
 
     it('will tell the user that they should check for spaces if there is a space char at the beginning or end of the phone number if they have rogue space characters there', async () => {
-        const user = userEvent.setup();
-        const phoneInput = screen.getByRole('textbox', {name: /phoneinput/i});
-        const anywhereElseOnScreen = screen.getByRole('textbox', {name: /emailinput/i});
-        const phoneInputErrorMessage = screen.getByTestId('phoneErrorMessage');
         const invalidphone = ' iamavalidphone@gmail.com ';
 
         await user.clear(phoneInput);
@@ -81,10 +72,6 @@ describe('The phone field input', () => {
     });
 
     it('will tell the user that they cannot only use space characters in a phone number if they have done that', async () => {
-        const user = userEvent.setup();
-        const phoneInput = screen.getByRole('textbox', {name: /phoneinput/i});
-        const anywhereElseOnScreen = screen.getByRole('textbox', {name: /emailinput/i});
-        const phoneInputErrorMessage = screen.getByTestId('phoneErrorMessage');
         const invalidphone = '   ';
 
         await user.clear(phoneInput);
@@ -94,10 +81,6 @@ describe('The phone field input', () => {
     });
 
     it('will highlight the field if there is an error', async () => {        
-        const user = userEvent.setup();
-        const phoneInput = screen.getByRole('textbox', {name: /phoneinput/i});
-        const anywhereElseOnScreen = screen.getByRole('textbox', {name: /emailinput/i});
-
         await user.clear(phoneInput);
         await user.click(anywhereElseOnScreen);
         expect(phoneInput).toHaveClass('error-field');

@@ -12,15 +12,19 @@ noErrorsAllowed();
 
 describe('The image upload element', () => {
 
+    let user, imageUploadElement, file, imageThumbnail, promptMessage, removeButton;
+
     beforeEach(() => {
         setupTest();
+        user = userEvent.setup();
+        imageUploadElement = screen.getByTestId('imageUploadInput');
+        file = new File(['test'], 'test.png', {type: 'image/png'});
+        imageThumbnail = screen.getByTestId('imageThumbnail');
+        promptMessage = screen.getByTestId('promptMessage');
+        removeButton = screen.getByRole('button', {name: /remove/i});
     });
 
     it('will accept a file being added to it', async () => {
-        const user = userEvent.setup();
-        const imageUploadElement = screen.getByTestId('imageUploadInput');
-        const file = new File(['test'], 'test.png', {type: 'image/png'});
-
         await user.upload(imageUploadElement, file);
         expect(imageUploadElement.files[0]).toStrictEqual(file);
         expect(imageUploadElement.files.item(0)).toStrictEqual(file);
@@ -28,24 +32,12 @@ describe('The image upload element', () => {
     });
 
     it('will change the prompt & the image upload element class so that the prompt is hidden and the image thumbnail is showing', async () => {
-        const user = userEvent.setup();
-        const imageUploadElement = screen.getByTestId('imageUploadInput');
-        const file = new File(['test'], 'test.png', {type: 'image/png'});
-        const imageThumbnail = screen.getByTestId('imageThumbnail');
-        const promptMessage = screen.getByTestId('promptMessage');
-
         await user.upload(imageUploadElement, file);
         expect(imageThumbnail).toHaveClass('image-upload-thumb show-thumb');
         expect(promptMessage).toHaveClass('hide');
     });
 
     it('will remove the image if the user presses the Remove button underneath the image upload element', async () => {
-        const user = userEvent.setup();
-        const imageUploadElement = screen.getByTestId('imageUploadInput');
-        const file = new File(['test'], 'test.png', {type: 'image/png'});
-        const removeButton = screen.getByRole('button', {name: /remove/i});
-        const imageThumbnail = screen.getByTestId('imageThumbnail');
-
         await user.upload(imageUploadElement, file);
         await user.click(removeButton);
         expect(imageThumbnail).toHaveClass('image-upload-thumb');
