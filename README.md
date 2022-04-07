@@ -23,7 +23,7 @@
 
 | Condition | Status | Notes
 | --- | ----------- | --- |
-| You must not use React.js and emotion for styling | true | Only pure CSS was used |
+| You must only use React.js and emotion for styling | true | Only pure CSS was used |
 | You must not use any other UI libraries | true | No libraries were used |
 | You must include a README.md file with instructions on how to install, build and run the app and how to run tests | true | This README.md includes all of that information |
 You should include any unit tests that you deem approproate / necessary | true | 11 test suites, 49 tests |
