@@ -61,19 +61,6 @@
       margin-top: 10px;
   }
 
-  .remove-button {
-    background: none;
-    color: rgba(240, 248, 255, 0.64);
-    border: none;
-    padding: 0;
-    cursor: pointer;
-    outline: inherit;
-    margin-top: 15px;
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 24px;
-  }
-
   .image-icon {
       position: absolute;
       top: 0;
