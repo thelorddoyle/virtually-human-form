@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react'
-import { DatePicker } from './formComponents/DatePicker/DatePicker'
+import { useEffect, useState } from "react"
+import { DatePicker } from "./formComponents/DatePicker/DatePicker"
 import { Validate, defaultErrors } from '../helpers/validators'
 import { SuccessBanner } from './formComponents/SuccessBanner/SuccessBanner'
 import { FirstName } from './formComponents/FirstName/FirstName'
