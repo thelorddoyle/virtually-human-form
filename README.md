@@ -44,7 +44,7 @@ img: null
 lastName: "Lord-Doyle"
 phone: "+61 451 087 593"
 ```
-Hopefully this helps you manually test the application if you'd like. *Note* This will not show in the testing environment as I applied an 'if' function that only runs the console.log if not a 'test' in a Node environment.
+Hopefully this helps you manually test the application if you'd like. *Note:* This will not show in the testing environment as I applied an 'if' function that only runs the console.log if not a 'test' in a Node environment.
 
 ## `Screenshot`
 
@@ -67,9 +67,10 @@ Hopefully this helps you manually test the application if you'd like. *Note* Thi
 
 # `Improvements`
 - Convert from raw CSS to inline-styling and nested selectors through Emotion
-- Mobile optimise styling
-- Make it so that date picker fields can be opened by clicking Enter when tabbed over and dropdown arrow keyed through
+- Mobile optimise
+- Make it so that date picker fields can be opened by clicking Enter when tabbed over and dropdown arrow keyed through (can currently only be tabbed through)
 - Ensure compatability for older browsers & test for compatibility
+- Make it so when user clicks Discard Changes all error validations are removed too
 # `Installation`
 
 I didn't know how deep you wanted me to go on this, so I have provided some basic instructions for someone who may not be familiar with GitHub.
@@ -144,32 +145,40 @@ The tests check that every component renders, that it renders correctly and that
 ## `Example test`
 
 ```js
-    it('will correctly render 29 days in February if it is a leap year', async () => {
-        setupTest()
+describe('The DOB datepicker input', () => {
 
-        const user = userEvent.setup()
+    let user, monthButton, dayButton, discardButton, yearButton;
+
+    beforeEach(() => {
+        setupTest();
+        user = userEvent.setup();
+        monthButton = screen.getByTestId('monthButton');
+        discardButton = screen.getByRole('button', { name: /discard/i });
+        yearButton = screen.getByTestId('yearButton');
+        dayButton = screen.getByTestId('dayButton');
+    });
+
+    it('will correctly render 29 days in February if it is a leap year', async () => {
 
         // choose February as a month
-        const monthButton = screen.getByTestId('monthButton');
-        await user.click(monthButton)
-        const differentMonth = screen.getByText(/february/i)
-        await user.click(differentMonth)
+        await user.click(monthButton);
+        const differentMonth = screen.getByText(/february/i);
+        await user.click(differentMonth);
         expect(monthButton).toHaveTextContent(/february/i);
 
         // choose 2020 as a year (which was a leap year)
-        const yearButton = screen.getByTestId('yearButton');
-        await user.click(yearButton)
-        const leapYear = screen.getByText(/2020/i)
-        await user.click(leapYear)
+        await user.click(yearButton);
+        const leapYear = screen.getByText(/2020/i);
+        await user.click(leapYear);
         expect(yearButton).toHaveTextContent(/2020/i);
 
         // try to get the 29th day in February which is only available on a leap year
-        const dayButton = screen.getByTestId('dayButton');
-        await user.click(dayButton)
-        const theleapday = screen.getByText(/29/i)
-        await user.click(theleapday)
+        await user.click(dayButton);
+        const theleapday = screen.getByText(/29/i);
+        await user.click(theleapday);
         expect(dayButton).toHaveTextContent(/29/i);
-    })
+    });
+});
 ```
 
 ## `No console errors`
