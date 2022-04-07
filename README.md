@@ -69,6 +69,7 @@ Hopefully this helps you manually test the application if you'd like. *Note* Thi
 - Convert from raw CSS to inline-styling and nested selectors through Emotion
 - Mobile optimise styling
 - Make it so that date picker fields can be opened by clicking Enter when tabbed over and dropdown arrow keyed through
+- Ensure compatability for older browsers & test for compatibility
 # `Installation`
 
 I didn't know how deep you wanted me to go on this, so I have provided some basic instructions for someone who may not be familiar with GitHub.
