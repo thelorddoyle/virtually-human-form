@@ -124,16 +124,17 @@ npm test -- datePick
 ```
 
 ## `Available test suites`
-
-- src/components/formComponents/FirstName/FirstName.test.js
-- src/components/formComponents/LastName/LastName.test.js
-- src/components/formComponents/DatePicker/DatePicker.test.js
-- src/components/formComponents/Email/Email.test.js
-- src/components/formComponents/Phone/Phone.test.js
-- src/components/formComponents/Bio/Bio.test.js
-- src/components/formComponents/Buttons/Buttons.test.js
-- src/components/Form.test.js
-- src/components/formComponents/SuccessBanner/SuccessBanner.test.js
+ -  src/App.test.js
+ -  src/components/Form.test.js
+ -  src/components/formComponents/FirstName/FirstName.test.js
+ -  src/components/formComponents/LastName/LastName.test.js
+ -  src/components/formComponents/Email/Email.test.js
+ -  src/components/formComponents/Phone/Phone.test.js
+ -  src/components/formComponents/DatePicker/DatePicker.test.js
+ -  src/components/formComponents/Bio/Bio.test.js
+ -  src/components/formComponents/ImageUpload/ImageUpload.test.js
+ -  src/components/formComponents/Buttons/Buttons.test.js
+ -  src/components/formComponents/SuccessBanner/SuccessBanner.test.js
 ## `What does the test suite test for?`
 Prior to this coding assessment, I have never used React testing so I really enjoyed learning about how the React Testing Library works and what the best practices are for RTL.
 
