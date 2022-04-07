@@ -17,15 +17,15 @@ export const DayButton = ({setActiveDay, isActiveDay, toggleButtonClass, selecte
     }, [isActiveDay])
 
     return (
-        <div className='dropdown'>
+        <div className="dropdown">
 
-            <div data-testid="dayButton" aria-label="chooseDayButton" tabIndex="0" id='dayButton' className={borderClass} onClick={e => {
+            <div data-testid="dayButton" aria-label="chooseDayButton" tabIndex="0" id="dayButton" className={borderClass} onClick={e => {
                 setActiveDay(!isActiveDay)
-                toggleButtonClass('dayButton')}}>
+                toggleButtonClass("dayButton")}}>
                 {selectedDay}
             </div>
 
-            <span className='svg-arrow'></span>
+            <span className="svg-arrow"></span>
 
             {isActiveDay && (
             <div className="dropdown-content">
