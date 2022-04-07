@@ -3,7 +3,7 @@
     flex-direction: column;
     align-items: center;
     padding-top: 75px;
-}
+};
 
 .image-upload {
     position: relative;
@@ -20,25 +20,25 @@
     color: gray;
     border: 2px solid #F0F8FF;
     border-radius: 50%;
-  }
+  };
 
   .image-upload-over {
       border-style: dashed;
-  }
+  };
 
   .image-upload-prompt {
       font-weight: 400;
       padding: 0 10px;
       padding-top: 5px;
-  }
+  };
 
   .hide {
     display: none;
-  }
+  };
 
   .image-upload-input {
       display: none;
-  }
+  };
 
   .image-upload-thumb {
     display: none;
@@ -50,16 +50,15 @@
     background-size: cover;
     background-position: center;
     position: relative;
-  }
+  };
 
 .show-thumb {
     display: inline;
-  }
+  };
 
-  
   .image-upload {
       margin-top: 10px;
-  }
+  };
 
   .remove-button {
     background: none;
@@ -72,7 +71,7 @@
     font-weight: 700;
     font-size: 16px;
     line-height: 24px;
-  }
+  };
 
   .image-icon {
       position: absolute;
@@ -83,11 +82,11 @@
       width: 30px;
       background-color: #2A2E35;
       border-radius: 50%;
-  }
+  };
 
   .camera {
       position: absolute;
       left: 50%;
       top: 50%;
       transform: translate(-50%,-50%);
-  }
+  };

@@ -14,8 +14,7 @@
     100% {
         opacity: 0;
     }
-
-}
+};
 
 .banners {
     font-family: 'Montserrat';
@@ -24,11 +23,11 @@
     line-height: 24px;
     color: white;
     letter-spacing: 0.6px;
-}
+};
 
 .success-banner-hidden {
     display: none;
-}
+};
 
 .success-banner-showing {
     z-index: 100;
@@ -43,4 +42,4 @@
     animation: opacityFadeInAndOut 5s normal forwards;
     transition-timing-function: ease-in;
     animation-delay: 1s;
-}
+};

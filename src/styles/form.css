@@ -7,24 +7,24 @@
     padding-top: 100px;
     grid-template-columns: 1fr 1fr;
     justify-items: start;
-}
+};
 
 .form-grid .form-grid-left {
     padding-left: 30%;
-}
+};
 
 .form-grid .form-grid-right {
     padding-left: 200px;
-}
+};
 
 .inline-grid {
     display: grid;
     grid-template-columns: 167px 167px 167px;
-}
+};
 
 .error-field {
     border: 1px red solid;
-}
+};
 
 .error {
     color:#E32636;
@@ -35,4 +35,4 @@
     font-size: 12px;
     letter-spacing: 0.25px;
     line-height: 16px;
-}
+};

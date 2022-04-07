@@ -1,3 +1,5 @@
+/* applied CSS reset */
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -17,46 +19,52 @@ time, mark, audio, video {
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
-}
+};
+
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
 	display: block;
-}
+};
+
 input, textarea { outline: none; }
 body {
 	line-height: 1;
-}
+};
+
 ol, ul {
 	list-style: none;
-}
+};
+
 blockquote, q {
 	quotes: none;
-}
+};
+
 blockquote:before, blockquote:after,
 q:before, q:after {
 	content: '';
 	content: none;
-}
+};
+
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
-}
+};
 
 * {
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
     font-size: 12px;
-}
+};
 
 body {
     background-color: #22262D;
     padding-bottom: 100px;
-}
+};
 
 span {
     font-size: 12px;
-}
+};
 
 h3 {
     position: static;
@@ -71,13 +79,10 @@ h3 {
     font-size: 24px;
     line-height: 32px;
     
-    /* identical to box height, or 133% */
     letter-spacing: 0.1px;
-    
     color: #F0F8FF;
-
     margin: 32px 0px;
-}
+};
 
 label {
     position: static;
@@ -92,15 +97,11 @@ label {
     font-size: 12px;
     line-height: 16px;
 
-    /* identical to box height, or 133% */
     letter-spacing: 0.857143px;
     text-transform: uppercase;
-
-    /* white/03.help */
     color: rgba(240, 248, 255, 0.32);
-
     margin: 8px 0px;
-}
+};
 
 input, textarea, select  {
     display: flex;
@@ -120,23 +121,23 @@ input, textarea, select  {
     font-weight: 500;
     font-size: 16px;
     color: rgba(240, 248, 255, 0.64);
-}
+};
 
 input:hover, textarea:hover, select:hover {
     border: 1px white solid;
-}
+};
 
 input:focus-visible, textarea:focus-visible {
     border: 1px #27B18A solid;
     box-shadow: none;
-}
+};
 
 select {
     display: inline-block;
     width: 160px;
     margin-right: 5px; 
-}
+};
 
 textarea {
     height: 100px;
-}
+};
