@@ -13,6 +13,7 @@
 <p align="center">
   <a href="#conditions">Conditions</a> •
   <a href="#userstory">User Story</a> •
+  <a href="#Future Improvements">Future Improvements</a> •
   <a href="#installation">Installation</a> •
   <a href="#testing">Testing</a> •
   <a href="#build">Build</a>
@@ -66,6 +67,8 @@ Hopefully this helps you manually test the application if you'd like. *Note* Thi
 
 # `Future Improvements`
 - Convert from raw CSS to inline-styling and nested selectors through Emotion
+- Mobile optimise styling
+- Make it so that date picker fields can be opened by clicking Enter when tabbed over and dropdown arrow keyed through
 # `Installation`
 
 I didn't know how deep you wanted me to go on this, so I have provided some basic instructions for someone who may not be familiar with GitHub.
