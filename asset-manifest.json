@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/virtually-human-form/static/css/main.6460344f.css",
+    "main.js": "/virtually-human-form/static/js/main.5658804b.js",
+    "index.html": "/virtually-human-form/index.html",
+    "main.6460344f.css.map": "/virtually-human-form/static/css/main.6460344f.css.map",
+    "main.5658804b.js.map": "/virtually-human-form/static/js/main.5658804b.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6460344f.css",
+    "static/js/main.5658804b.js"
+  ]
+}
